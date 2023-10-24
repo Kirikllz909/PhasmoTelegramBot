@@ -11,6 +11,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import com.phasmoghostbot.telegrambot.constants.Constants;
 import com.phasmoghostbot.telegrambot.constants.State;
 import com.phasmoghostbot.telegrambot.impl.keyboardFactory.SelectKeyboardFactory;
+import com.phasmoghostbot.telegrambot.impl.keyboardFactory.SelectWhichInformationKeyboardFactory;
 import com.phasmoghostbot.telegrambot.models.GhostSearchParameters;
 
 public class ResponseHandler {
@@ -42,9 +43,21 @@ public class ResponseHandler {
         // TODO Auto-generated method stub
         switch (buttonId) {
             case Constants.SELECT_MODE_BUTTON_INFORMATION:
+                replyToInformationMode(chatId);
                 break;
             case Constants.SELECT_MODE_BUTTON_GHOST_SOLVER:
                 break;
         }
+    }
+
+    private void replyToInformationMode(long chatId) {
+        SendMessage message = new SendMessage();
+        message.setText(Constants.SELECT_WHICH_MODE_INFORMATION_MESSAGE);
+        message.setReplyMarkup(new SelectWhichInformationKeyboardFactory().generateKeyboard());
+        message.setChatId(chatId);
+
+        sender.execute(message);
+
+        chatState.put(chatId, State.SELECTED_INFORMATION);
     }
 }
