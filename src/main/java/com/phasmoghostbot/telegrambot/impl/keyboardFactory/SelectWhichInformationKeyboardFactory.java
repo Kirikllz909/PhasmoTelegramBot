@@ -26,9 +26,14 @@ public class SelectWhichInformationKeyboardFactory implements KeyboardFactory {
         buttonGhost.setText(Constants.SELECTED_MODE_BUTTON_INFORMATION_GHOST);
         buttonGhost.setCallbackData(Constants.SELECTED_MODE_BUTTON_INFORMATION_GHOST);
 
+        InlineKeyboardButton buttonBackToSelectMode = new InlineKeyboardButton();
+        buttonBackToSelectMode.setText(Constants.BACK_BUTTON_TEXT);
+        buttonBackToSelectMode.setCallbackData(Constants.START_MODE);
+
         buttonsInRows.add(buttonEvidence);
         buttonsInRows.add(buttonGhost);
         rows.add(buttonsInRows);
+        rows.add(List.of(buttonBackToSelectMode));
 
         markup.setKeyboard(rows);
 
