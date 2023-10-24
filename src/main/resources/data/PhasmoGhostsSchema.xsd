@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="PhasmophobiaGhosts" type="PhasmophobiaGhostsType"></xs:element>
+
+    <!--Definition
+    for type PhasmophobiaGhostsType-->
+    <xs:complexType name="PhasmophobiaGhostsType">
+        <xs:sequence>
+            <xs:element name="Evidences" type="EvidencesType" maxOccurs="1" minOccurs="1" />
+            <xs:element name="Ghosts" type="GhostsType" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Definition of type EvidencesType-->
+    <xs:complexType name="EvidencesType">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="Evidence" type="EvidenceType" />
+        </xs:choice>
+    </xs:complexType>
+
+    <!--Definition
+    of type GhostEvidencesType-->
+    <xs:complexType name="GhostEvidencesType">
+        <xs:choice minOccurs="1" maxOccurs="3">
+            <xs:element name="Evidence" type="EvidenceType" />
+        </xs:choice>
+    </xs:complexType>
+
+    <!-- Definition of type EvidenceType-->
+    <xs:complexType name="EvidenceType">
+        <xs:choice>
+            <xs:element name="RefId" type="xs:IDREF" minOccurs="0" />
+            <xs:sequence minOccurs="0">
+                <xs:element name="Id" type="xs:ID" />
+                <xs:element name="Name" type="xs:string" />
+                <xs:element name="Mechanics" type="xs:string" />
+            </xs:sequence>
+        </xs:choice>
+    </xs:complexType>
+
+    <!-- Definition of type GhostsType-->
+    <xs:complexType name="GhostsType">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="Ghost" type="GhostType" />
+        </xs:choice>
+    </xs:complexType>
+
+    <!-- Definiton of type GhostType-->
+    <xs:complexType name="GhostType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" />
+            <xs:element name="GhostEvidences" type="GhostEvidencesType" />
+            <xs:element name="SpecialAbilities" type="SpecialAbilitiesType" />
+            <xs:element name="HuntStartingSanity" type="HuntStartingSanityType" />
+            <xs:element name="Speed" type="xs:string" />
+            <xs:element name="BlinkFrequency" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Definition of type HuntStartingSanityType-->
+    <xs:complexType name="HuntStartingSanityType">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="Condition" type="HuntStartingSanityConditionType" />
+        </xs:choice>
+    </xs:complexType>
+
+    <!-- Definition of type HuntStartingSanityConditionType-->
+    <xs:complexType name="HuntStartingSanityConditionType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" />
+            <xs:element name="Value" type="xs:integer" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Definition of type SpecialAbilitiesType-->
+    <xs:complexType name="SpecialAbilitiesType">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="Ability" type="SpecialAbilityType" />
+        </xs:choice>
+    </xs:complexType>
+
+    <!-- Definition of type SpecialAbilityType-->
+    <xs:complexType name="SpecialAbilityType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" />
+            <xs:element name="Description" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,1313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="PhasmoGhostsSchema.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<PhasmophobiaGhosts>
+    <Evidences>
+        <Evidence>
+            <Id>EMF-5</Id>
+            <Name>EMF 5</Name>
+            <Mechanics>When a ghost with EMF Level 5 as one of its evidences interacts with the
+                environment, the EMF reading will have a 25% chance to be an EMF 5 emission instead
+                of EMF 2 or EMF 3, which can be detected and confirmed with an EMF Reader.</Mechanics>
+        </Evidence>
+        <Evidence>
+            <Id>Orb</Id>
+            <Name>Ghost Orb</Name>
+            <Mechanics>When a map is loaded in, Ghost Orbs will spawn in the favourite room and float
+                within the room. They look like very small orbs that glide across the screen,
+                generally one at a time. They can be seen through the screen on a Video Camera with
+                night vision, or through any available video feed with night vision.
+
+                Depending on the map and the location of the favourite room, Ghost Orbs can
+                sometimes be seen via the map's CCTVs if the CCTV happens to be facing into the
+                favourite room, though this is usually rare. Ghost Orbs will periodically shift
+                position within the favourite room, forcing players to be more proactive in locating
+                them.
+
+                When the ghost room changes on difficulties where 'Changing favourite room' is not
+                set to 'None' (such as on Professional and Nightmare), the Ghost Orbs will also move
+                to the new favourite room.</Mechanics>
+        </Evidence>
+        <Evidence>
+            <Id>SpiritBox</Id>
+            <Name>Spirit Box</Name>
+            <Mechanics>The Spirit Box is considered an electronic equipment. When interfered with, all the
+                LEDs/icons will flicker rapidly. Holding an active Spirit Box within 7.5 metres of a
+                ghost on the same floor will attract it to the player.
+
+                Note that the ghost may still respond audibly if the player asks questions while the
+                Spirit Box is being interfered with. This also counts as Spirit Box evidence.
+
+                There is too many information about this device. Check wiki for mor info:
+                https://phasmophobia.fandom.com/wiki/Spirit_Box</Mechanics>
+        </Evidence>
+        <Evidence>
+            <Id>Freezing</Id>
+            <Name>Freezing</Name>
+            <Mechanics>The presence of a ghost in a room will cause the room's temperature to decrease,
+                regardless of evidence. Ghosts without Freezing Temperatures evidence will be able
+                to drop the room's temperature to 1°C (33.8°F), whereas ghosts with Freezing
+                Temperatures as evidence will be able to drop the temperature to −10°C (14°F).
+
+                When the temperature drops to 5°C (41°F) or below, the players may be able to see
+                their own breath; this does not necessarily mean that the ghost will have Freezing
+                Temperatures as evidence. Freezing Temperatures can only be confirmed if the
+                thermometer reads a temperature strictly below 1°C (33.8°F).
+
+                If using a Tier I thermometer, Freezing Temperatures can only be confirmed if the
+                thermometer reads a temperature strictly below 0°C (32°F) as it is less accurate.</Mechanics>
+        </Evidence>
+        <Evidence>
+            <Id>Ultraviolet</Id>
+            <Name>Ultraviolet</Name>
+            <Mechanics>Ultraviolet evidence consists of fingerprints and footprints which can be revealed
+                by using a UV Light.
+
+                Each interaction on a valid surface will always produce a fingerprint or a footprint
+                (except for the Obake which has a 25% chance to hide them).
+
+                Additionally, the Obake can sometimes use an ability to reduce the remaining time
+                for all existing fingerprints and footprints on the map by half.</Mechanics>
+        </Evidence>
+        <Evidence>
+            <Id>Writing</Id>
+            <Name>Writing</Name>
+            <Mechanics>If Ghost Writing is a piece of evidence, if the ghost chooses to interact with an
+                opened ghost writing book, the book will rise and frantic scribbling will be
+                visible.
+
+                There are six different types of Ghost Writing that a ghost can put in the book.
+                Each has an equal chance of occurring and the type of writing does not narrow down
+                the type of ghost any more than the fact that the ghost writes in the book at all.
+                Each book may contain different types of writing.</Mechanics>
+        </Evidence>
+        <Evidence>
+            <Id>DOTS</Id>
+            <Name>D.O.T.S</Name>
+            <Mechanics>The D.O.T.S Projector can be placed (default: F on keyboard) on a wall or floor
+                similar to a motion sensor. It emits a matrix of bright green laser points in a
+                small area from the projector. Tier I D.O.T.S Projector additionally can be held and
+                toggled (default: right click on mouse) to create a cone of D.O.T.S light where it
+                is pointed.
+
+                Ghosts with D.O.T.S evidence will occasionally enter a 'D.O.T.S state'. During this,
+                a faint silhouette of the ghost will be visible only when it passes through the
+                laser grid. The ghost will also walk towards the nearest player if there is one in
+                the same room, or towards a random waypoint if no players are nearby. While these
+                silhouettes are visible to the naked eye (unless the ghost is a Goryo), a video
+                camera with night vision may allow for better visibility. This also means that
+                D.O.T.S can be tracked simultaneously alongside Ghost Orbs. Dead players cannot see
+                D.O.T.S by any means.
+
+                Though the D.O.T.S Projector is an electronic equipment, only the Tier I D.O.T.S.
+                Projector when activated and held will attract the ghost to the player during a
+                hunt, and they are otherwise safe to hold onto.</Mechanics>
+        </Evidence>
+    </Evidences>
+    <Ghosts>
+        <Ghost>
+            <Name>Banshee</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>Orb</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Ultraviolet</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>DOTS</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Unique Screech</Name>
+                    <Description>When a Parabolic Microphone is used, the Banshee has a 33% chance of making
+                        a unique shriek-like paranormal sound instead of a whisper or footstep.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Frequent singing ghost event</Name>
+                    <Description>Performs melodic ghost events more often than other ghost types</Description>
+                </Ability>
+                <Ability>
+                    <Name>Roaming to target</Name>
+                    <Description>When the Banshee performs a roam, if the target is inside the investigation
+                        area, it has a 2/3 (67%) chance of roaming to the target. This does not
+                        occur during hunts.
+
+                        This can result in a very high ability count on the post-game statistics.
+                        The roam cannot be completed if the player is on a different floor.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Special condition of hunting</Name>
+                    <Description>The Banshee's hunt threshold is 50%, but it only checks the target's sanity
+                        when trying to hunt, rather than the average sanity like other ghost types,
+                        meaning that only the target needs to be at or below 50% sanity for it to
+                        attempt to hunt.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Special hunting behavior</Name>
+                    <Description>When a Banshee hunts, it will mostly follow standard hunt rules, but it will
+                        ignore all players other than its hunt target. It will not attempt to chase
+                        other players nor will it kill them, even if it comes into direct contact
+                        with a non-target player, instead passing through them.
+
+                        If the hunt target is outside the building, the Banshee will still use the
+                        target's sanity to decide whether to hunt. However, if it does hunt, it will
+                        hunt like any other ghost, chasing any opportune player.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Default</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Demon</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>Freezing</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Ultraviolet</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Writing</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Sanity independent hunt</Name>
+                    <Description>The Demon has an ability that allows it to automatically start a hunt,
+                        regardless of current average sanity. There is no particular behaviour or
+                        condition (such as requiring line-of-sight with a player) that affects if it
+                        activates or not; if it decides to use its ability, it will hunt. This hunt
+                        can be blocked by normal prevention methods.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Lesser hunt cooldown</Name>
+                    <Description>Demons have a minimum cooldown of 20 seconds between hunts, instead of the
+                        usual 25 seconds.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Smudging prevents hunts for shorter</Name>
+                    <Description>Smudging a Demon will prevent hunts for only 60 seconds, as opposed to the
+                        standard 90 seconds.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Larger effective range of a crucifix</Name>
+                    <Description>4.5 metres instead of 3 for Tier I
+                        6 metres instead of 4 for Tier II
+                        7.5 metres instead of 5 for Tier III</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>70</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Default</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Deogen</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>SpiritBox</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Writing</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>DOTS</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Unique response through the Spirit Box</Name>
+                    <Description>If the player asks any question through the Spirit Box while standing within
+                        1 metre of the Deogen, it has a 33% chance with each question to produce a
+                        unique response of constant heavy bull-like breathing, instead of a regular
+                        response.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Spirit box is required on the nightmare or higher</Name>
+                    <Description>On difficulties with only 1 or 2 evidences (e.g. Nightmare), the Deogen
+                        always has Spirit Box as one of its pieces of evidence due to its unique
+                        response.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Different speed during hunts</Name>
+                    <Description>When the Deogen is chasing a player, its speed is based on its pathfinding
+                        distance to the target player and has three thresholds: above 6 meters,
+                        between 6 and 2.5 meters and below 2.5 meters.
+                        More than 6m: 3 m/s
+                        Between 2.5 - 6m: Assumed speed gradient between 0.4 - 3 m/s
+                        Less than 2.5m: 0.4 m/s
+                        If the Deogen is smudged or is otherwise not chasing any player, its speed will
+                        remain at its current speed, or 1.6 m/s if its current speed is greater than
+                        3 m/s. Otherwise, the Deogen does not alter its speed based on
+                        line-of-sight while chasing a player.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Always knows where players are during a hunt</Name>
+                    <Description>When the hunt begins, the Deogen will pick the nearest player (by
+                        straight-line distance) to move towards. It will occasionally "refresh" and
+                        repick the nearest target throughout the hunt. One can also use Incense to
+                        stun the Deogen temporarily and force it to change its target when the
+                        smudge effect runs out.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Unique blink frequency</Name>
+                    <Description>During a hunt, the Deogen's flickering is on average invisible for shorter
+                        and visible for longer</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>40</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Quickly rushing down players during a hunt no matter where they are, but is slow to
+                approach when closing in for the kill.</Speed>
+            <BlinkFrequency>Invisible for shorter and visible for longer</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Goryo</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>EMF-5</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Ultraviolet</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>DOTS</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Short roams</Name>
+                    <Description>When performing a roam, the Goryo can only perform short roams, rather than
+                        either short or long roams.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Goryo cannot change favorite rooms</Name>
+                    <Description>The Goryo cannot change favorite rooms by itself in any difficulty. This can
+                        be overridden via the sanity wish when using the Monkey Paw.</Description>
+                </Ability>
+                <Ability>
+                    <Name>D.O.T.S. is required on the nightmare or higher</Name>
+                    <Description>On limited evidence (1/2 evidence) games, a Goryo will always have the
+                        D.O.T.S. Projector as one of its evidence types.</Description>
+                </Ability>
+                <Ability>
+                    <Name>D.O.T.S silhouette is only visible through a Video Camera</Name>
+                    <Description>The Goryo will only be seen in a D.O.T.S state if no players are in the same
+                        room as the ghost. In addition, its D.O.T.S silhouette is only visible
+                        through a Video Camera, and cannot be seen with the naked eye. A Goryo will
+                        still manifest normally during ghost events and hunts with its ghost model,
+                        which does not require any special equipment to be seen.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Default</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Hantu</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>Orb</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Freezing</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Ultraviolet</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Moves quicker in colder areas during hunts</Name>
+                    <Description>During a hunt, the Hantu's speed is affected by the temperature of the room that it goes through:
+
+                        Room temperature	Ghost speed (m/s)
+                        More than 15°C (59°F)       	1.4
+                        12°C to 15°C (53.6°F to 59°F)	1.75
+                        9°C to 12°C (48.2°F to 53.6°F)	2.1
+                        6°C to 9°C (42.8°F to 48.2°F)	2.3
+                        3°C to 6°C (37.4°F to 42.8°F)	2.4
+                        0°C to 3°C (32°F to 37.4°F)	    2.5
+                        Lesser than 0°C (32°F)      	2.7</Description>
+                </Ability>
+                <Ability>
+                    <Name>Freezing temperatures are required on the nightmare or higher</Name>
+                    <Description>On limited evidence (1/2 evidence) games, a Hantu will always have Freezing
+                        Temperatures as one of its evidence types.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Freezing breath when the breaker is off</Name>
+                    <Description>When the Hantu's ghost model is visible during a hunt, it will emit freezing
+                        breath near its head in any room as long as the breaker is off. Dead players
+                        cannot see this breath.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Depends on the temperature</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Jinn</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>EMF-5</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Freezing</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Ultraviolet</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>The Jinn cannot turn off a breaker</Name>
+                    <Description>The Jinn cannot turn off a breaker directly through interacting with it. The
+                        fuse box can still be turned off by overloading, whether by the player or
+                        the Jinn (unintentionally).</Description>
+                </Ability>
+                <Ability>
+                    <Name>Can lower the sanity of all players within 3 meters of it by 25%</Name>
+                    <Description>When the Jinn uses its ability and the fuse box is on, it will lower the
+                        sanity of all players in the same room or otherwise within 3 meters of it by
+                        25%. An EMF 2/5 reading will be generated at the fuse box.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Different speed during hunts</Name>
+                    <Description>During a hunt, if all of the following three criteria are satisfied:
+
+                        1. The fuse box is turned on;
+                        2. The Jinn has line-of-sight with a player it is targeting;
+                        3. The Jinn is further than 3 metres from that player.
+
+                        Then its speed will be fixed at 2.5 m/s while the criteria are met.
+                        Otherwise, it will obey standard ghost speeds.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Fast during chase if it is far away from the player, but has normal speed otherwise.</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Mare</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>Orb</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>SpiritBox</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Writing</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Different hunting starting sanity when lights are turned off</Name>
+                    <Description>If the lights are turned off, the hunt sanity threshold is increased to 60%,
+                        and if the lights are turned on, the threshold is decreased to 40%. This
+                        applies even if the fuse box is turned off or broken, but not if the
+                        room's lights are destroyed. Other sources of light, such as brought-in
+                        equipment and Firelights, do not affect this threshold.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Turns off lights and breaks lightbulbs more often</Name>
+                    <Description>Mares cannot interact with lights to turn them on (this excludes computer
+                        monitors and televisions), and they are more likely to choose turning off
+                        lights as an interaction.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Mares cannot interact with lights to turn them on (this excludes computer
+                        monitors and televisions)</Name>
+                    <Description>Mares cannot interact with lights to turn them on (this excludes computer
+                        monitors and televisions)</Description>
+                </Ability>
+                <Ability>
+                    <Name>Chance of turning the light off almost immediately</Name>
+                    <Description>If a player turns on a light that is within 4 metres of a Mare, it has a
+                        small chance of turning the light off almost immediately. There is a minimum
+                        cooldown of 10 seconds between the light being turned on, which will restart
+                        if it is turned on before the 10 seconds is up. This also applies for
+                        televisions and computers.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Lights on
+                    </Name>
+                    <Value>40</Value>
+                </Condition>
+                <Condition>
+                    <Name>Lights off</Name>
+                    <Value>60</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Default</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Moroi</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>SpiritBox</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Freezing</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Writing</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Spirit box is required on nightmare or higher</Name>
+                    <Description>On limited evidence (1/2 evidence) games, the Moroi will always have Spirit
+                        Box as one of its evidence types.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Can curse players through the spirit box or the parabolic microphone, making
+                        them lose sanity faster</Name>
+                    <Description>The Moroi has an ability to "curse" a target through the following ways:
+
+                        By successfully obtaining a response from the Spirit Box; this will curse
+                        the person who "caused" the response, either by asking questions or
+                        triggering the failsafe.
+                        By hearing whispers through the parabolic microphone.
+
+                        When a player is cursed, their passive sanity drain is doubled, being in a
+                        lit area will no longer prevent sanity drain. Walking
+                        outside of the investigation area will still pause sanity drain until they
+                        enter again. Consuming Sanity Medication removes the curse for that player.
+                        Players that have been cursed before in the contract can be cursed again.
+                        Multiple players can be cursed at the same time, but curses do not stack on
+                        a single player.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Different speed during hunts</Name>
+                    <Description>The Moroi's speed is dependent on the average sanity at the beginning of the
+                        hunt. The base speed increases by an average of 0.083 m/s for every 5%
+                        average sanity below its average hunt threshold of 50%.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Will be disoriented for longer when smudged during a hunt</Name>
+                    <Description>When using an Incense during a hunt, the duration where the Moroi cannot see
+                        nor kill players is 7.5 seconds instead of 5.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Depends on sanity</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Myling</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>EMF-5</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Ultraviolet</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Writing</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Produces paranormal sounds more frequently</Name>
+                    <Description>The Myling produces paranormal sounds (that can only be heard through a
+                        Parabolic Microphone) more often than other ghosts.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Has quieter footsteps and vocalizations during hunts</Name>
+                    <Description>When hunting, a Myling's footstep and vocalizations sounds will only be
+                        audible to players within 12 meters, slightly greater than the range
+                        required for electronic interference, instead of the usual 20 meters. The
+                        volume of footsteps is slightly muffled near the limit, but quickly becomes
+                        discernible as it approaches.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Default</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Obake</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>EMF-5</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Orb</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Ultraviolet</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Can leave a unique fingerprint pattern</Name>
+                    <Description>When creating handprints or fingerprints, there is a one-sixth (~16.7%)
+                        chance for the Obake to create a unique handprint/fingerprint pattern:
+
+                        1. A six-fingered handprint instead of the usual five fingers
+                        2. Two fingerprints on a light switch instead of one
+                        3. Five fingerprints on keyboards and Prison cell doors instead of four</Description>
+                </Ability>
+                <Ability>
+                    <Name>Occasionally fails to leave fingerprints</Name>
+                    <Description>Each time the Obake interacts with a valid surface, it has a 75% chance of
+                        leaving Ultraviolet evidence, instead of the usual 100%.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Fingerprints can disappear faster than usual</Name>
+                    <Description>The Obake occasionally triggers an ability to reduce the remaining time for
+                        all existing fingerprints and footprints on the map by half. For example,
+                        two fingerprints lingering on the map with 40 seconds and 70 seconds before
+                        timing out and disappearing are cut in half to 20 and 35 seconds remaining
+                        respectively. This ability can be triggered multiple times in quick
+                        succession, making it possible for an instance of fingerprints to last for
+                        mere seconds before vanishing.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Ultraviolet is required on nightmare or higher</Name>
+                    <Description>On limited evidence (1/2 evidence) games, an Obake will always have
+                        Fingerprints as one of its evidence types. This does not affect its ability
+                        to occasionally not leave fingerprints and footprints on a surface.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Has a chance to blink in a different ghost model when hunting</Name>
+                    <Description>During a hunt, the Obake has a 1/15 (6.67%) chance each time it flickers to
+                        shapeshift into a different ghost model of the same gender. 
+                        It will then return back to its original model. This is guaranteed
+                        to happen at least once per hunt. Dead players cannot see this shapeshift.
+                        The ghost changing into a different posture (e.g. going from standing to
+                        crawling) within a hunt, while otherwise retaining the same model, is also
+                        considered a shapeshift.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Default</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Oni</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>EMF-5</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Freezing</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>DOTS</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>More active when people are nearby</Name>
+                    <Description>On average, the Oni is more active, interacting with objects more often,
+                        especially when there are people in the ghost room.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Prefer showing in its full form during a manifestation event</Name>
+                    <Description>Will prefer showing in its full form during a manifestation event as opposed
+                        to a shadowy or translucent form.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Cannot produce "airball" ghost events</Name>
+                    <Description>Cannot perform the "airball" event, which involves a physical ball of fog
+                        moving towards the player, usually disappearing with a hiss sound upon
+                        collision. Note that chasing events can similarly cause a hiss.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Model remains visible for longer periods when hunting</Name>
+                    <Description>During a Hunt, an Oni will flash visible for longer than most other ghosts,
+                        making it easier to take a photo of.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Default</Speed>
+            <BlinkFrequency>Oni will flash visible for longer than most other ghosts</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Onryo</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>Orb</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>SpiritBox</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Freezing</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Blows out fiery objects (candles, campfire) more often with more dead people</Name>
+                    <Description>If a player is currently dead, the Onryo will blow out sources of flame (lit
+                        firelight, igniter, or campfire) at a higher frequency. More dead players
+                        increases this frequency. It will blow out flames at the same frequency as
+                        other ghosts if no players are dead.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Presence of flames prevents the ghost from hunting</Name>
+                    <Description>If the Onryo attempts a hunt within 4 metres of any type of flame, it
+                        will blow out the flame instead, and the hunt will fail. This does not
+                        restart the hunt cooldown timer, unlike a crucifix. If both a crucifix and a
+                        flame are within range, the flame will take priority over the crucifix for
+                        preventing the hunt.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Chance to hunt at any sanity after blowing out a flame</Name>
+                    <Description>Every third flame that the Onryo blows out will cause it to attempt to
+                        initiate a hunt, regardless of current average sanity. This hunt can be
+                        blocked by normal prevention methods (e.g. a crucifix) or another flame.
+                        
+                        1. Note that there can be a delay of up to ~6 seconds before the hunt actually
+                        initiates.
+                        2. If a flame prevents a hunt or is blown out during a hunt, it will count
+                        towards the three-flame rule.
+                        3. Whether it was the same item being blown out does not matter; it can be the
+                        same firelight blown out 3 times, 3 firelights each blown out 1 time, or any
+                        other combination.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Every third flame that the Onryo blows out will cause it to attempt to
+                        initiate a hunt, regardless of current average sanity</Name>
+                    <Value>100</Value>
+                </Condition>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>60</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Default</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Phantom</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>SpiritBox</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Ultraviolet</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>DOTS</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Ghost is invisible in a photo</Name>
+                    <Description>If a successful photo is a taken of a Phantom, either in its physical form
+                        or when it appears in the D.O.T.S. Projector light, the ghost will be invisible 
+                        in the photo, and the photo will not contain any interference.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Special behavior of the ghost when a photo is taken during a ghost event</Name>
+                    <Description>1. The ghost will physically disappear
+                        2. Electronic equipment will cease to malfunction
+                        3. Players will no longer hear their heartbeats
+                        4. The event sound will continue to play for the duration of the event</Description>
+                </Ability>
+                <Ability>
+                    <Name>Seeing the ghost nearby during manifestations and hunts drains more sanity</Name>
+                    <Description>Being within 10 metres of a Phantom while in pseudo line-of-sight (where
+                        heartbeats play) reduces the player's sanity by 0.5%/s. This only applies
+                        during ghost events and hunts, and is separate from passive sanity drain.
+                        This does not apply during ghost events if the Phantom was made invisible by
+                        taking a picture.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Occasionally roams to a random player</Name>
+                    <Description>The Phantom has an ability where it will choose a random player and travel
+                        to their location (as opposed to a regular roam). This will create an EMF
+                        Level 2 reading at the targeted location. This behavior is somewhat similar
+                        to that of the Banshee and the Wraith; unlike Banshees, Phantoms do not
+                        select a player to target until they die or leave the game, and do not do
+                        this as often; and unlike Wraiths, the Phantom physically walks to that
+                        point rather than teleporting, and will set off Motion Sensors and disturb
+                        Salt on the way to it.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Remains invisible for longer periods when hunting</Name>
+                    <Description>During a hunt, a Phantom will flash visible every 1 to 2 seconds, as opposed
+                        to every 0.3 to 1 second for other ghosts, making it harder to take a photo
+                        of.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Default</Speed>
+            <BlinkFrequency>Remains invisible for longer periods when hunting</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Poltergeist</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>SpiritBox</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Ultraviolet</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Writing</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Can throw a single object farther than other types</Name>
+                    <Description>Occasionally, the Poltergeist will throw an item with a "force" value of 2 -
+                        6, instead of 1 - 3 with other ghosts.</Description>
+                </Ability>
+                <Ability>
+                    <Name>The Poltergeist is more likely to throw items</Name>
+                    <Description>In general, the Poltergeist is more likely to throw items. During a hunt,
+                        the Poltergeist will always throw an item every 0.5 seconds, instead of only
+                        having a 50% chance to do so.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Can throw multiple objects at once</Name>
+                    <Description>The Poltergeist will occasionally use an ability that allows it to throw
+                        multiple nearby items at once, creating an EMF level 2 reading (the thrown
+                        items themselves generate EMF 3). This will decrease the sanity of all
+                        nearby players in line-of-sight with the EMF 2 location by a percentage
+                        equal to the number of items thrown multiplied by 2. The ability and
+                        associated sanity drain works even when the lights are turned on.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Default</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Raiju</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>EMF-5</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Orb</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>DOTS</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Active electronics boost its speed during hunts</Name>
+                    <Description>During hunts, if the Raiju is within a certain distance of at least once
+                        piece of active electronic equipment, it will move at a fixed speed of 2.5
+                        m/s.
+                        This also applies for items outside the investigation area, but not for
+                        items across floors.
+                        All effects listed above apply to most electronic equipment, both when held
+                        in the hand and items dropped on the floor.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Disrupts electronics from further away when manifesting</Name>
+                    <Description>When a Raiju manifests during a ghost event or a hunt, it will interfere
+                        with electronics that are up to 15 metres away on the same floor, instead of
+                        the usual 10 metres.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Nearby at least one piece of active electronic equipment</Name>
+                    <Value>65</Value>
+                </Condition>
+                <Condition>
+                    <Name>There is no active electronic equipment</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Active electronics boost its speed during hunts</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Revenant</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>Orb</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Freezing</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Writing</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Significant speed increase when chasing a player during hunts</Name>
+                    <Description>Revenants have very noticeable speed change between roaming and chasing
+                        modes. When a Revenant is roaming, it will move at 1 m/s. However, as soon
+                        as it detects a player (either visually or through speech/electronics), it
+                        will begin to move at 3 m/s (nearly twice the base speed of most other
+                        ghosts) and sustains this speed until it reaches the spot where it last
+                        detected a player. If and when reverting to roaming mode, the Revenant's
+                        speed will slowly decrease over ~2.7 seconds (deceleration rate of 0.75
+                        m/s²) back to its initial value of 1 m/s.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Roam mode: slow
+                Chasing mode: fast</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Shade</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>EMF-5</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Freezing</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Writing</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Harder to find due to it being generally less active</Name>
+                    <Description>The Shade is less likely to perform ghost events at high sanity. At 100%
+                        average sanity, it has a 0% chance of successfully performing an event. This
+                        success rate increases by 2% per percentage of average sanity lost; at an
+                        average sanity of 50%, an attempted ghost event will always succeed.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Produces hissing and shadowy form ghost events more often</Name>
+                    <Description>When it performs a ghost event, the Shade has a higher chance (67% per
+                        event) of performing a "ghost mist" ghost event rather than manifestations.
+                        If it does manifest for a ghost event, it has a higher chance (67%) of
+                        appearing as a shadow. If the ghost is made to appear using a Summoning
+                        Circle, a Music Box, or a Monkey Paw, it has a chance of appearing as a
+                        black shadow rather than in its full form while in the ghost event stage. It
+                        will return to a fully visible form when the hunt begins.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Generally unwilling to hunt and perform interactions in the presence of
+                        players</Name>
+                    <Description>If at least one person is in the same room as a Shade, it will be unable
+                        to perform regular interactions (except Ghost Writing) or initiate a hunt,
+                        regardless of average sanity. It may still perform these actions if it
+                        happens to wander into a room without players. Since interactions
+                        occur in a range, the Shade can still "reach" into the player's room from
+                        another room to interact with objects.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>35</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Default</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Spirit</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>EMF-5</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>SpiritBox</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Writing</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Lit smudge sticks double the hunt cooldown</Name>
+                    <Description>
+                        When Incense is used near a Spirit, it will not be able to initiate a hunt
+                        for 180 seconds instead of 90 seconds with most other ghosts. Like other
+                        ghosts, this will not prevent cursed hunts. This delay will still apply if
+                        the Spirit was smudged while already hunting.
+                    </Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Default</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Thaye</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>Orb</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Writing</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>DOTS</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Abilities of the ghost depend on it's age</Name>
+                    <Description>The Thaye has an internal "age" parameter that affects its general activity.
+                        Every 1 to 2 minutes, the Thaye attempts to age; if at least one player is
+                        in the same room as the ghost, the Thaye will add 1 to its age, else it will
+                        wait another 30 seconds before attempting to age again.
+                        Per age added:
+                        -6% Hunt sanity threshold
+                        -0.175 m/s Hunt speed
+                        -15% Relative interaction/ghost event rate	</Description>
+                </Ability>
+                <Ability>
+                    <Name>Very active and fast at the start</Name>
+                    <Description>With age 0 thaye has this parameters:
+                        Hunt sanity threshold: 75%
+                        Hunt speed: 2.75 m/s
+                        Relative interaction/ghost event rate: 200%	</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Age 0</Name>
+                    <Value>75</Value>
+                </Condition>
+                <Condition>
+                    <Name>Age 4</Name>
+                    <Value>51</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Depends on the age</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>The Mimic</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>SpiritBox</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Freezing</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Ultraviolet</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Will always produce false ghost orbs</Name>
+                    <Description>The Mimic provides "evidence" of Ghost Orbs in addition to its three main
+                        evidence types, which also appear on Nightmare difficulty and on custom
+                        difficulties with reduced evidences, including zero evidence. These Ghost
+                        Orbs, along with the other evidences if none are hidden due to the
+                        difficulty, will always exist regardless of the type of ghost that The Mimic
+                        chooses to imitate.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Mimics other ghost types one after another for brief periods of time</Name>
+                    <Description>The Mimic is able to imitate any type of ghost, and inherit all of its
+                        features and abilities:
+
+                        -Interaction and ghost event rates and preferences
+                        -Hunt thresholds
+                        -Hunt movement speeds
+                        -Various forms of special abilities (e.g. Poltergeist multithrow, Demon
+                        ability hunt)
+
+                        The Mimic will change the ghost type that it chooses to imitate every 30
+                        seconds to 2 minutes, but cannot change during hunts.
+                        If The Mimic mimics a Thaye, a fixed age is randomly selected, and it will
+                        mimic another ghost using its own timer instead of the Thaye's ageing
+                        timer. The Mimic may also imitate the player or The Mimic (itself), but
+                        in these cases, it will act as a "default" ghost and have no special
+                        abilities. Mimicking the player, as well as any other ghost, does not change
+                        its ghost model.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Can copy features of evidence of mimicked ghost</Name>
+                    <Description>It may also copy features of evidence of mimicked ghost types, but not their
+                        evidences themselves. For example, it is able to copy the Obake's
+                        six-fingered handprints as The Mimic itself has Ultraviolet as evidence, but
+                        it cannot copy the Goryo's trait of only appearing on a Video Camera when
+                        interacting with a D.O.T.S Projector, as The Mimic does not have D.O.T.S.
+                        Projector as one of its evidences. </Description>
+                </Ability>
+                <Ability>
+                    <Name>Can't copy guaranteed evidence on reduced evidence difficulty</Name>
+                    <Description>It cannot copy other ghost types' guaranteed evidences on Nightmare/reduced
+                        evidence types custom difficulty, even if The Mimic has them as evidence.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Every third flame that the Onryo blows out will cause it to attempt to
+                        initiate a hunt, regardless of current average sanity</Name>
+                    <Value>100</Value>
+                </Condition>
+                <Condition>
+                    <Name>Yokai triggering sanity</Name>
+                    <Value>80</Value>
+                </Condition>
+                <Condition>
+                    <Name>Thaye hunting sanity</Name>
+                    <Value>75</Value>
+                </Condition>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Depends on mimicking type of ghost</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>The Twins</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>EMF-5</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>SpiritBox</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Freezing</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Can interact with the environment simultaneously</Name>
+                    <Description>When The Twins uses its ability, it will perform one interaction in the
+                        normal radius (up to 3 metres) and one within a larger radius (up to 16
+                        metres). All such interactions follow the standard 25% chance of producing
+                        EMF 5 instead of 2 or 3, regardless of which radius was used to perform the
+                        interaction.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Can hunt from a different place than expected</Name>
+                    <Description>When The Twins attempts to initiate a hunt, there is a 50% chance for it
+                        begin at its current location, and a 50% chance for it to begin close to the
+                        area where it last interacted using its ability. Regardless of where The
+                        Twins hunts from, it will follow standard hunting rules. As The Twins is
+                        only one ghost, two hunts cannot occur simultaneously, and it will follow
+                        the standard 25 second cooldown between hunts.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Differing speeds depending on which twin hunts</Name>
+                    <Description>Depending on where the hunt begins from, The Twins will move at two
+                        different speeds. If it hunts from its present location, it will have a base
+                        speed of 1.5 m/s, and if it hunts from the area where its large radius
+                        interaction occurred, it will have a base speed of 1.9 m/s.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Slow or fast depending on where the hunt begins from</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Wraith</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>EMF-5</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>SpiritBox</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>DOTS</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Never steps in a salt</Name>
+                    <Description>The Wraith will never step in a salt pile, and therefore will never disturb
+                        them. This includes Tier III Salt during hunts, rendering it ineffective
+                        against one.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Can teleport to a random player, becoming active near them, outside of ghost
+                        events and hunts</Name>
+                    <Description>When the Wraith is not hunting, it has a chance to teleport within 3 metres
+                        of a random player, generating an EMF Level 2 reading at the location where
+                        it teleported to, with a 25% chance for this to be an EMF Level 5 reading
+                        instead. The Wraith will resume normal behaviour after teleporting.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Default</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Yokai</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>Orb</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>SpiritBox</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>DOTS</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Talking near it will increase its chance of hunting and interaction rate</Name>
+                    <Description>When at least one player uses voice chat within a certain range of the
+                        Yokai, its hunt sanity threshold is temporarily increased to 80%. Otherwise,
+                        it has the standard threshold of 50%.</Description>
+                </Ability>
+                <Ability>
+                    <Name>Can only hear voices and detect electronics within a short range</Name>
+                    <Description>During hunts, a Yokai can only hear players or sense handheld active
+                        electronics that are within 2.5 meters of it. Its line-of-sight is
+                        unaffected.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Talking around Yokai</Name>
+                    <Value>80</Value>
+                </Condition>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Default</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+        <Ghost>
+            <Name>Yurei</Name>
+            <GhostEvidences>
+                <Evidence>
+                    <RefId>Orb</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>Freezing</RefId>
+                </Evidence>
+                <Evidence>
+                    <RefId>DOTS</RefId>
+                </Evidence>
+            </GhostEvidences>
+            <SpecialAbilities>
+                <Ability>
+                    <Name>Will be temporarily confined to its room after smudging</Name>
+                    <Description>When Incense is used on the Yurei, in addition to preventing hunts and
+                        temporarily increasing activity, it will return to its favourite room and be
+                        trapped in it for 60 seconds. It can still leave that room by performing a
+                        ghost event, but it will return to it once the event ends.</Description>
+                </Ability>
+                <Ability>
+                    <Name>May randomly shut a door and deduct nearby players' sanity</Name>
+                    <Description>The Yurei has an ability that will cause the following when used:
+
+                        - All players within 7.5 metres of the ghost will have their sanity
+                        decreased
+                        by 15%. Players outside the investigation area will not be affected by the
+                        sanity drain.
+                        - If the ghost's current room has one or more open door, it will randomly
+                        select one and close it fully. This in turn produces an EMF 2
+                        interaction, just like any other door touch.
+                            1. The Yurei cannot use its ability if the room it is in has no door.
+                            2. All ghosts can shut a door from in the same way the Yurei can, however
+                            the Yurei may do it more often as it is connected to its sanity drain ability.
+                        - Locker and closet doors are not affected by the Yurei's ability. Tent
+                        doors, however, are.
+                        If the ghost shuts a front door (exit door) fully without a ghost event or
+                        hunt, then it is definitely a Yurei.</Description>
+                </Ability>
+            </SpecialAbilities>
+            <HuntStartingSanity>
+                <Condition>
+                    <Name>Default</Name>
+                    <Value>50</Value>
+                </Condition>
+            </HuntStartingSanity>
+            <Speed>Default</Speed>
+            <BlinkFrequency>Default</BlinkFrequency>
+        </Ghost>
+    </Ghosts>
+</PhasmophobiaGhosts>
