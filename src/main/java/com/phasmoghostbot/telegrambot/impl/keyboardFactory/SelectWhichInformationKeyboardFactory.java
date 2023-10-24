@@ -19,8 +19,8 @@ public class SelectWhichInformationKeyboardFactory implements KeyboardFactory {
         List<InlineKeyboardButton> buttonsInRows = new ArrayList<>();
 
         InlineKeyboardButton buttonEvidence = new InlineKeyboardButton();
-        buttonEvidence.setText(Constants.SELECT_MODE_BUTTON_INFORMATION);
-        buttonEvidence.setCallbackData(Constants.SELECT_MODE_BUTTON_INFORMATION);
+        buttonEvidence.setText(Constants.SELECTED_MODE_BUTTON_INFORMATION_EVIDENCE);
+        buttonEvidence.setCallbackData(Constants.SELECTED_MODE_BUTTON_INFORMATION_EVIDENCE);
 
         InlineKeyboardButton buttonGhost = new InlineKeyboardButton();
         buttonGhost.setText(Constants.SELECTED_MODE_BUTTON_INFORMATION_GHOST);
