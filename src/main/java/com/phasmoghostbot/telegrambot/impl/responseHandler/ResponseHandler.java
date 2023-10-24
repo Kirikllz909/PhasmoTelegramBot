@@ -9,7 +9,6 @@ import org.telegram.abilitybots.api.sender.SilentSender;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import com.phasmoghostbot.telegrambot.constants.Constants;
-import com.phasmoghostbot.telegrambot.constants.State;
 import com.phasmoghostbot.telegrambot.impl.keyboardFactory.SelectKeyboardFactory;
 import com.phasmoghostbot.telegrambot.impl.keyboardFactory.SelectWhichInformationKeyboardFactory;
 import com.phasmoghostbot.telegrambot.models.GhostSearchParameters;
@@ -19,13 +18,11 @@ public class ResponseHandler {
     private final Logger logger = LogManager.getLogger(ResponseHandler.class);
 
     private final SilentSender sender;
-    private final Map<Long, State> chatState;
     private final Map<Long, GhostSearchParameters> ghostSearchParameters;
 
     public ResponseHandler(SilentSender sender, DBContext db) {
         this.sender = sender;
         ghostSearchParameters = db.getMap(Constants.CHAT_SEARCH_PARAMS);
-        chatState = db.getMap(Constants.CHAT_STATE);
     }
 
     public void replyToStart(long chatId) {
@@ -35,8 +32,6 @@ public class ResponseHandler {
         message.setReplyMarkup(new SelectKeyboardFactory().generateKeyboard());
 
         sender.execute(message);
-
-        chatState.put(chatId, State.AWAITING_SELECTED);
     }
 
     public void replyToButtons(long chatId, String buttonId) {
@@ -57,7 +52,5 @@ public class ResponseHandler {
         message.setChatId(chatId);
 
         sender.execute(message);
-
-        chatState.put(chatId, State.SELECTED_INFORMATION);
     }
 }
