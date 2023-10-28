@@ -18,17 +18,15 @@ public class SelectWhichInformationKeyboardFactory implements KeyboardFactory {
         List<List<InlineKeyboardButton>> rows = new ArrayList<>();
         List<InlineKeyboardButton> buttonsInRows = new ArrayList<>();
 
-        InlineKeyboardButton buttonEvidence = new InlineKeyboardButton();
-        buttonEvidence.setText(Constants.SELECTED_MODE_BUTTON_INFORMATION_EVIDENCE);
-        buttonEvidence.setCallbackData(Constants.SELECTED_MODE_BUTTON_INFORMATION_EVIDENCE);
+        InlineKeyboardButton buttonEvidence = this.generateKeyboardButton(
+                Constants.SELECTED_MODE_BUTTON_INFORMATION_EVIDENCE,
+                Constants.SELECTED_MODE_BUTTON_INFORMATION_EVIDENCE);
 
-        InlineKeyboardButton buttonGhost = new InlineKeyboardButton();
-        buttonGhost.setText(Constants.SELECTED_MODE_BUTTON_INFORMATION_GHOST);
-        buttonGhost.setCallbackData(Constants.SELECTED_MODE_BUTTON_INFORMATION_GHOST);
+        InlineKeyboardButton buttonGhost = this.generateKeyboardButton(Constants.SELECTED_MODE_BUTTON_INFORMATION_GHOST,
+                Constants.SELECTED_MODE_BUTTON_INFORMATION_GHOST);
 
-        InlineKeyboardButton buttonBackToSelectMode = new InlineKeyboardButton();
-        buttonBackToSelectMode.setText(Constants.BACK_BUTTON_TEXT);
-        buttonBackToSelectMode.setCallbackData(Constants.START_MODE);
+        InlineKeyboardButton buttonBackToSelectMode = this.generateKeyboardButton(Constants.BACK_BUTTON_TEXT,
+                Constants.START_MODE);
 
         buttonsInRows.add(buttonEvidence);
         buttonsInRows.add(buttonGhost);
