@@ -20,12 +20,13 @@ public class SelectEvidenceInformationKeyboardFactory implements KeyboardFactory
 
         boolean isEvidenceCountEven = false;
         int arrIterationCount;
+        int evidenceCount = Constants.EVIDENCE_LIST.size();
 
-        if (Constants.EVIDENCE_LIST.size() % 2 == 0) {
+        if (evidenceCount % 2 == 0) {
             isEvidenceCountEven = true;
-            arrIterationCount = Constants.EVIDENCE_LIST.size();
+            arrIterationCount = evidenceCount;
         } else
-            arrIterationCount = Constants.EVIDENCE_LIST.size() - 1;
+            arrIterationCount = evidenceCount - 1;
 
         for (int i = 0; i < arrIterationCount; i += 2) {
             Evidence currentEvidence = Constants.EVIDENCE_LIST.get(i);
@@ -44,7 +45,7 @@ public class SelectEvidenceInformationKeyboardFactory implements KeyboardFactory
                 Constants.SELECT_MODE_BUTTON_INFORMATION);
 
         if (isEvidenceCountEven == false) {
-            Evidence lastEvidence = Constants.EVIDENCE_LIST.get(Constants.EVIDENCE_LIST.size() - 1);
+            Evidence lastEvidence = Constants.EVIDENCE_LIST.get(arrIterationCount);
 
             InlineKeyboardButton lastEvidenceButton = this.generateKeyboardButton(lastEvidence.getName(),
                     Constants.SELECTED_EVIDENCE + " " + lastEvidence.getId());
