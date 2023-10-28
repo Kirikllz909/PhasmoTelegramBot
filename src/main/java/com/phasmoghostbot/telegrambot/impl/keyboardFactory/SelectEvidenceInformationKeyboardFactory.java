@@ -31,27 +31,23 @@ public class SelectEvidenceInformationKeyboardFactory implements KeyboardFactory
             Evidence currentEvidence = Constants.EVIDENCE_LIST.get(i);
             Evidence nextEvidence = Constants.EVIDENCE_LIST.get(i + 1);
 
-            InlineKeyboardButton evidence1 = new InlineKeyboardButton();
-            evidence1.setText(currentEvidence.getName());
-            evidence1.setCallbackData(Constants.SELECTED_EVIDENCE + " " + currentEvidence.getId());
+            InlineKeyboardButton evidence1 = this.generateKeyboardButton(currentEvidence.getName(),
+                    Constants.SELECTED_EVIDENCE + " " + currentEvidence.getId());
 
-            InlineKeyboardButton evidence2 = new InlineKeyboardButton();
-            evidence2.setText(nextEvidence.getName());
-            evidence2.setCallbackData(Constants.SELECTED_EVIDENCE + " " + nextEvidence.getId());
+            InlineKeyboardButton evidence2 = this.generateKeyboardButton(nextEvidence.getName(),
+                    Constants.SELECTED_EVIDENCE + " " + nextEvidence.getId());
 
             rows.add(List.of(evidence1, evidence2));
         }
 
-        InlineKeyboardButton backButton = new InlineKeyboardButton();
-        backButton.setText(Constants.BACK_BUTTON_TEXT);
-        backButton.setCallbackData(Constants.SELECT_MODE_BUTTON_INFORMATION);
+        InlineKeyboardButton backButton = this.generateKeyboardButton(Constants.BACK_BUTTON_TEXT,
+                Constants.SELECT_MODE_BUTTON_INFORMATION);
 
         if (isEvidenceCountEven == false) {
             Evidence lastEvidence = Constants.EVIDENCE_LIST.get(Constants.EVIDENCE_LIST.size() - 1);
 
-            InlineKeyboardButton lastEvidenceButton = new InlineKeyboardButton();
-            lastEvidenceButton.setText(lastEvidence.getName());
-            lastEvidenceButton.setCallbackData(Constants.SELECTED_EVIDENCE + " " + lastEvidence.getId());
+            InlineKeyboardButton lastEvidenceButton = this.generateKeyboardButton(lastEvidence.getName(),
+                    Constants.SELECTED_EVIDENCE + " " + lastEvidence.getId());
 
             rows.add(List.of(lastEvidenceButton, backButton));
         } else
