@@ -1,4 +1,4 @@
-package com.phasmoghostbot.telegrambot.impl.keyboardFactory;
+package com.phasmoghostbot.telegrambot.impl.keyboardFactory.information_mode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,8 @@ public class SelectWhichInformationKeyboardFactory implements KeyboardFactory {
                 Constants.SELECTED_MODE_BUTTON_INFORMATION_EVIDENCE,
                 Constants.SELECTED_MODE_BUTTON_INFORMATION_EVIDENCE);
 
-        InlineKeyboardButton buttonGhost = this.generateKeyboardButton(Constants.SELECTED_MODE_BUTTON_INFORMATION_GHOST,
+        InlineKeyboardButton buttonGhost = this.generateKeyboardButton(
+                Constants.SELECTED_MODE_BUTTON_INFORMATION_GHOST,
                 Constants.SELECTED_MODE_BUTTON_INFORMATION_GHOST);
 
         InlineKeyboardButton buttonBackToSelectMode = this.generateKeyboardButton(Constants.BACK_BUTTON_TEXT,
