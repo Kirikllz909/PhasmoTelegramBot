@@ -1,4 +1,4 @@
-package com.phasmoghostbot.telegrambot.impl.keyboardFactory;
+package com.phasmoghostbot.telegrambot.impl.keyboardFactory.selection;
 
 import java.util.ArrayList;
 import java.util.List;
