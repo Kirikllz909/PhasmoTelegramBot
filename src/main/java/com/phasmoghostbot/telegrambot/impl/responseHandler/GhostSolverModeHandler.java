@@ -69,7 +69,7 @@ public class GhostSolverModeHandler {
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
 
         message.setChatId(chatId);
-        message.setText("Current blink frequence: " + parameters.getBlinkFrequency());
+        message.setText("Current blink frequency: " + parameters.getBlinkFrequency());
         message.setReplyMarkup(new BlinkFrequencyEditKeyboard().generateKeyboard());
 
         sender.execute(message);
