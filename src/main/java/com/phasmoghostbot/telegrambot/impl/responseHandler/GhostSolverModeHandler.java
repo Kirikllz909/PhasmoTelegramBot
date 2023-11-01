@@ -6,7 +6,7 @@ import org.telegram.abilitybots.api.sender.SilentSender;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import com.phasmoghostbot.telegrambot.constants.Constants;
-import com.phasmoghostbot.telegrambot.impl.keyboardFactory.ghostSolver.GhostSolverActions;
+import com.phasmoghostbot.telegrambot.impl.keyboardFactory.ghostSolver.GhostSolverActionsKeyboard;
 import com.phasmoghostbot.telegrambot.models.Evidence;
 import com.phasmoghostbot.telegrambot.models.GhostSearchParameters;
 
@@ -35,7 +35,7 @@ public class GhostSolverModeHandler {
 
         message.setChatId(chatId);
         message.setText(messageText.toString());
-        message.setReplyMarkup(new GhostSolverActions().generateKeyboard());
+        message.setReplyMarkup(new GhostSolverActionsKeyboard().generateKeyboard());
 
         sender.execute(message);
     }

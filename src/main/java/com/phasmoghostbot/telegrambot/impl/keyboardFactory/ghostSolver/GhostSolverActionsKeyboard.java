@@ -10,14 +10,15 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import com.phasmoghostbot.telegrambot.api.keyboardFactory.KeyboardFactory;
 import com.phasmoghostbot.telegrambot.constants.Constants;
 
-public class GhostSolverActions implements KeyboardFactory {
+public class GhostSolverActionsKeyboard implements KeyboardFactory {
 
     @Override
     public ReplyKeyboard generateKeyboard() {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rows = new ArrayList<>();
 
-        InlineKeyboardButton setSpeedButton = generateKeyboardButton(Constants.GHOST_SOLVER_SET_SPEED_MODE_MESSAGE,
+        InlineKeyboardButton setSpeedButton = generateKeyboardButton(
+                Constants.GHOST_SOLVER_SET_SPEED_MODE_MESSAGE,
                 Constants.GHOST_SOLVER_SET_SPEED_MODE_CALLBACK);
         InlineKeyboardButton setBlinkFrequencyButton = generateKeyboardButton(
                 Constants.GHOST_SOLVER_SET_BLINK_FREQUENCY_MODE_MESSAGE,
@@ -26,8 +27,10 @@ public class GhostSolverActions implements KeyboardFactory {
                 Constants.GHOST_SOLVER_SET_CURRENT_SANITY_MODE_MESSAGE,
                 Constants.GHOST_SOLVER_SET_CURRENT_SANITY_MODE_CALLBACK);
         InlineKeyboardButton setEvidencesButton = generateKeyboardButton(
-                Constants.GHOST_SOLVER_SET_EVIDENCES_MODE_MESSAGE, Constants.GHOST_SOLVER_SET_EVIDENCES_MODE_CALLBACK);
-        InlineKeyboardButton backButton = generateKeyboardButton(Constants.BACK_BUTTON_TEXT, Constants.START_MODE);
+                Constants.GHOST_SOLVER_SET_EVIDENCES_MODE_MESSAGE,
+                Constants.GHOST_SOLVER_SET_EVIDENCES_MODE_CALLBACK);
+        InlineKeyboardButton backButton = generateKeyboardButton(Constants.BACK_BUTTON_TEXT,
+                Constants.START_MODE);
 
         rows.add(List.of(setSpeedButton));
         rows.add(List.of(setCurrentSanityButton));
