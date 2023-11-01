@@ -57,6 +57,7 @@ public class ResponseHandler {
                 break;
 
             case Constants.GHOST_SOLVER_CALLBACK:
+                GhostSolverModeHandler.replyToGhostSolverSelected(sender, chatId, ghostSearchParameters);
                 break;
         }
     }
