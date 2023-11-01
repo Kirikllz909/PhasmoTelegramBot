@@ -6,6 +6,7 @@ import org.telegram.abilitybots.api.sender.SilentSender;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import com.phasmoghostbot.telegrambot.constants.Constants;
+import com.phasmoghostbot.telegrambot.impl.keyboardFactory.ghostSolver.BlinkFrequencyEditKeyboard;
 import com.phasmoghostbot.telegrambot.impl.keyboardFactory.ghostSolver.GhostSolverActionsKeyboard;
 import com.phasmoghostbot.telegrambot.impl.keyboardFactory.ghostSolver.SpeedEditKeyboard;
 import com.phasmoghostbot.telegrambot.models.Evidence;
@@ -58,6 +59,28 @@ public class GhostSolverModeHandler {
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
 
         parameters.setSpeed(newSpeed);
+
+        ghostSearchParameters.put(chatId, parameters);
+    }
+
+    public static void replyToSetBlinkFrequencyMode(SilentSender sender, long chatId,
+            Map<Long, GhostSearchParameters> ghostSearchParameters) {
+        SendMessage message = new SendMessage();
+        GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
+
+        message.setChatId(chatId);
+        message.setText("Current blink frequence: " + parameters.getBlinkFrequency());
+        message.setReplyMarkup(new BlinkFrequencyEditKeyboard().generateKeyboard());
+
+        sender.execute(message);
+    }
+
+    public static void changeBlinkFrequency(long chatId, String newBlinkFrequency,
+            Map<Long, GhostSearchParameters> ghostSearchParameters) {
+
+        GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
+
+        parameters.setBlinkFrequency(newBlinkFrequency);
 
         ghostSearchParameters.put(chatId, parameters);
     }
