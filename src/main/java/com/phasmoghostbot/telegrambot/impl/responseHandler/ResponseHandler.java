@@ -59,6 +59,27 @@ public class ResponseHandler {
             case Constants.GHOST_SOLVER_CALLBACK:
                 GhostSolverModeHandler.replyToGhostSolverSelected(sender, chatId, ghostSearchParameters);
                 break;
+            case Constants.GHOST_SOLVER_SET_SPEED_MODE_CALLBACK:
+                GhostSolverModeHandler.replyToSetSpeedMode(sender, chatId, ghostSearchParameters);
+                break;
+            case Constants.GHOST_SOLVER_SET_SPEED_ACTION_CALLBACK:
+                GhostSolverModeHandler.changeSpeed(chatId, buttonCallbackData.split(" ")[1], ghostSearchParameters);
+                GhostSolverModeHandler.replyToSetSpeedMode(sender, chatId, ghostSearchParameters);
+                break;
+            case Constants.GHOST_SOLVER_SET_BLINK_FREQUENCY_MODE_CALLBACK:
+                break;
+            case Constants.GHOST_SOLVER_SET_BLINK_FREQUENCY_ACTION_CALLBACK:
+                break;
+            case Constants.GHOST_SOLVER_SET_CURRENT_SANITY_MODE_CALLBACK:
+                break;
+            case Constants.GHOST_SOLVER_SET_CURRENT_SANITY_ACTION_CALLBACK:
+                break;
+            case Constants.GHOST_SOLVER_SET_EVIDENCES_MODE_CALLBACK:
+                break;
+            case Constants.GHOST_SOLVER_SET_EVIDENCES_ACTION_CALLBACK:
+                break;
+            case Constants.GHOST_SOLVER_GET_POSSIBLE_GHOSTS_CALLBACK:
+                break;
         }
     }
 }
