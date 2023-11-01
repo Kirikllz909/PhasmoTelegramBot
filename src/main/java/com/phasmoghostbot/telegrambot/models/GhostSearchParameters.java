@@ -10,11 +10,13 @@ import lombok.Setter;
 @Setter
 public class GhostSearchParameters {
     private String speed;
+    private String blinkFrequency;
     private Integer currentSanity;
     private List<Evidence> evidences;
 
     public GhostSearchParameters() {
         speed = "Default";
+        blinkFrequency = "Default";
         currentSanity = 100;
         evidences = new ArrayList<Evidence>();
     }
