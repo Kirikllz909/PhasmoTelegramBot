@@ -37,13 +37,20 @@ public interface Constants {
 
     String GHOST_SOLVER_SET_SPEED_MODE_MESSAGE = "Change speed";
     String GHOST_SOLVER_SET_SPEED_MODE_CALLBACK = "Set_speed_mode";
+    String GHOST_SOLVER_SET_SPEED_ACTION_CALLBACK = "Change_speed";
 
     String GHOST_SOLVER_SET_CURRENT_SANITY_MODE_MESSAGE = "Change current sanity";
     String GHOST_SOLVER_SET_CURRENT_SANITY_MODE_CALLBACK = "Set_sanity_mode";
+    String GHOST_SOLVER_SET_CURRENT_SANITY_ACTION_CALLBACK = "Change_sanity";
 
     String GHOST_SOLVER_SET_EVIDENCES_MODE_MESSAGE = "Change ghost evidences";
     String GHOST_SOLVER_SET_EVIDENCES_MODE_CALLBACK = "Change_evidences_mode";
+    String GHOST_SOLVER_SET_EVIDENCES_ACTION_CALLBACK = "Reverse_evidence_state";
 
     String GHOST_SOLVER_SET_BLINK_FREQUENCY_MODE_MESSAGE = "Change blink frequency";
     String GHOST_SOLVER_SET_BLINK_FREQUENCY_MODE_CALLBACK = "Change_blink_frequency_mode";
+    String GHOST_SOLVER_SET_BLINK_FREQUENCY_ACTION_CALLBACK = "Change_blink_frequency";
+
+    String GHOST_SOLVER_GET_POSSIBLE_GHOSTS_MESSAGE = "Get possible ghosts";
+    String GHOST_SOLVER_GET_POSSIBLE_GHOSTS_CALLBACK = "Get_possible_ghosts";
 }
