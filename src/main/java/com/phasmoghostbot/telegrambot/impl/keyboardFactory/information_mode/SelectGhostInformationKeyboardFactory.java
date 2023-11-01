@@ -34,22 +34,22 @@ public class SelectGhostInformationKeyboardFactory implements KeyboardFactory {
             Ghost secondGhost = Constants.GHOST_LIST.get(i + 1);
 
             InlineKeyboardButton ghostButton1 = this.generateKeyboardButton(firstGhost.getName(),
-                    Constants.SELECTED_GHOST + " " + firstGhost.getName());
+                    Constants.INFORMATION_MODE_SELECTED_GHOST_CALLBACK + " " + firstGhost.getName());
             InlineKeyboardButton ghostButton2 = this.generateKeyboardButton(secondGhost.getName(),
-                    Constants.SELECTED_GHOST + " " + secondGhost.getName());
+                    Constants.INFORMATION_MODE_SELECTED_GHOST_CALLBACK + " " + secondGhost.getName());
 
             rows.add(List.of(ghostButton1, ghostButton2));
         }
 
         InlineKeyboardButton backButton = this.generateKeyboardButton(
                 Constants.BACK_BUTTON_TEXT,
-                Constants.SELECT_MODE_BUTTON_INFORMATION);
+                Constants.INFORMATION_MODE_CALLBACK);
 
         if (!isGhostCountEven) {
             Ghost lastGhost = Constants.GHOST_LIST.get(maxArrIterations);
 
             InlineKeyboardButton lastGhostButton = this.generateKeyboardButton(lastGhost.getName(),
-                    Constants.SELECTED_GHOST + " " + lastGhost.getName());
+                    Constants.INFORMATION_MODE_SELECTED_GHOST_CALLBACK + " " + lastGhost.getName());
             rows.add(List.of(lastGhostButton, backButton));
         } else
             rows.add(List.of(backButton));

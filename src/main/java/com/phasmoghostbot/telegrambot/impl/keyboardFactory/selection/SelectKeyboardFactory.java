@@ -19,12 +19,12 @@ public class SelectKeyboardFactory implements KeyboardFactory {
         List<InlineKeyboardButton> buttonsInRow = new ArrayList<>();
 
         InlineKeyboardButton buttonEvidence = new InlineKeyboardButton();
-        buttonEvidence.setText(Constants.SELECT_MODE_BUTTON_INFORMATION);
-        buttonEvidence.setCallbackData(Constants.SELECT_MODE_BUTTON_INFORMATION);
+        buttonEvidence.setText(Constants.INFORMATION_MODE_CALLBACK);
+        buttonEvidence.setCallbackData(Constants.INFORMATION_MODE_CALLBACK);
 
         InlineKeyboardButton buttonGhostSolver = new InlineKeyboardButton();
-        buttonGhostSolver.setText(Constants.SELECT_MODE_BUTTON_GHOST_SOLVER);
-        buttonGhostSolver.setCallbackData(Constants.SELECT_MODE_BUTTON_GHOST_SOLVER);
+        buttonGhostSolver.setText("Ghost solver");
+        buttonGhostSolver.setCallbackData(Constants.GHOST_SOLVER_CALLBACK);
 
         buttonsInRow.add(buttonEvidence);
         buttonsInRow.add(buttonGhostSolver);

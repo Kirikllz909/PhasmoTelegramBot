@@ -33,22 +33,22 @@ public class SelectEvidenceInformationKeyboardFactory implements KeyboardFactory
             Evidence nextEvidence = Constants.EVIDENCE_LIST.get(i + 1);
 
             InlineKeyboardButton evidence1 = this.generateKeyboardButton(currentEvidence.getName(),
-                    Constants.SELECTED_EVIDENCE + " " + currentEvidence.getId());
+                    Constants.INFORMATION_MODE_SELECTED_EVIDENCE_CALLBACK + " " + currentEvidence.getId());
 
             InlineKeyboardButton evidence2 = this.generateKeyboardButton(nextEvidence.getName(),
-                    Constants.SELECTED_EVIDENCE + " " + nextEvidence.getId());
+                    Constants.INFORMATION_MODE_SELECTED_EVIDENCE_CALLBACK + " " + nextEvidence.getId());
 
             rows.add(List.of(evidence1, evidence2));
         }
 
         InlineKeyboardButton backButton = this.generateKeyboardButton(Constants.BACK_BUTTON_TEXT,
-                Constants.SELECT_MODE_BUTTON_INFORMATION);
+                Constants.INFORMATION_MODE_CALLBACK);
 
         if (isEvidenceCountEven == false) {
             Evidence lastEvidence = Constants.EVIDENCE_LIST.get(arrIterationCount);
 
             InlineKeyboardButton lastEvidenceButton = this.generateKeyboardButton(lastEvidence.getName(),
-                    Constants.SELECTED_EVIDENCE + " " + lastEvidence.getId());
+                    Constants.INFORMATION_MODE_SELECTED_EVIDENCE_CALLBACK + " " + lastEvidence.getId());
 
             rows.add(List.of(lastEvidenceButton, backButton));
         } else

@@ -26,7 +26,7 @@ public class ResponseHandler {
 
     public void replyToStart(long chatId) {
         SendMessage message = new SendMessage();
-        message.setText(Constants.SELECT_MODE_MESSAGE);
+        message.setText(Constants.SELECT_MESSAGE);
         message.setChatId(chatId);
         message.setReplyMarkup(new SelectKeyboardFactory().generateKeyboard());
 
@@ -40,23 +40,23 @@ public class ResponseHandler {
                 replyToStart(chatId);
                 break;
 
-            case Constants.SELECT_MODE_BUTTON_INFORMATION:
+            case Constants.INFORMATION_MODE_CALLBACK:
                 InformationModeHandler.replyToInformationMode(sender, chatId);
                 break;
-            case Constants.SELECTED_MODE_BUTTON_INFORMATION_EVIDENCE:
+            case Constants.INFORMATION_MODE_EVIDENCE_CALLBACK:
                 InformationModeHandler.replyToInformationEvidenceMode(sender, chatId);
                 break;
-            case Constants.SELECTED_MODE_BUTTON_INFORMATION_GHOST:
+            case Constants.INFORMATION_MODE_GHOST_CALLBACK:
                 InformationModeHandler.replyToInformationGhostMode(sender, chatId);
                 break;
-            case Constants.SELECTED_EVIDENCE:
+            case Constants.INFORMATION_MODE_SELECTED_EVIDENCE_CALLBACK:
                 InformationModeHandler.replyToSelectedEvidence(sender, chatId, buttonCallbackData.split(" ")[1]);
                 break;
-            case Constants.SELECTED_GHOST:
+            case Constants.INFORMATION_MODE_SELECTED_GHOST_CALLBACK:
                 InformationModeHandler.replyToSelectedGhost(sender, chatId, buttonCallbackData.split(" ")[1]);
                 break;
 
-            case Constants.SELECT_MODE_BUTTON_GHOST_SOLVER:
+            case Constants.GHOST_SOLVER_CALLBACK:
                 break;
         }
     }

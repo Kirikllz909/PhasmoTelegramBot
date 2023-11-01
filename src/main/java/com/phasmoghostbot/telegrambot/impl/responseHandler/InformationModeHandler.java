@@ -17,7 +17,7 @@ import com.phasmoghostbot.telegrambot.models.HuntStartingCondition;
 public class InformationModeHandler {
     public static void replyToInformationMode(SilentSender sender, Long chatId) {
         SendMessage message = new SendMessage();
-        message.setText(Constants.SELECT_WHICH_MODE_INFORMATION_MESSAGE);
+        message.setText(Constants.INFORMATION_MODE_MESSAGE);
         message.setReplyMarkup(new SelectWhichInformationKeyboardFactory().generateKeyboard());
         message.setChatId(chatId);
 
@@ -26,7 +26,7 @@ public class InformationModeHandler {
 
     public static void replyToInformationEvidenceMode(SilentSender sender, Long chatId) {
         SendMessage message = new SendMessage();
-        message.setText(Constants.SELECTED_MODE_BUTTON_INFORMATION_EVIDENCE_MESSAGE);
+        message.setText(Constants.INFORMATION_MODE_EVIDENCE_MESSAGE);
         message.setChatId(chatId);
         message.setReplyMarkup(new SelectEvidenceInformationKeyboardFactory().generateKeyboard());
 
@@ -35,7 +35,7 @@ public class InformationModeHandler {
 
     public static void replyToInformationGhostMode(SilentSender sender, long chatId) {
         SendMessage message = new SendMessage();
-        message.setText(Constants.SELECTED_MODE_BUTTON_INFORMATION_GHOST_MESSAGE);
+        message.setText(Constants.INFORMATION_MODE_GHOST_MESSAGE);
         message.setChatId(chatId);
         message.setReplyMarkup(new SelectGhostInformationKeyboardFactory().generateKeyboard());
 
@@ -50,7 +50,7 @@ public class InformationModeHandler {
             messageText.append("Wrong evidence name" + "\n");
         } else
             messageText.append("Name: " + evidence.getName() + "\n" + "Mechanics: " + evidence.getMechanics() + "\n");
-        messageText.append(Constants.SELECTED_MODE_BUTTON_INFORMATION_EVIDENCE_MESSAGE);
+        messageText.append(Constants.INFORMATION_MODE_EVIDENCE_MESSAGE);
 
         SendMessage message = new SendMessage();
         message.setText(messageText.toString());
@@ -90,7 +90,7 @@ public class InformationModeHandler {
                         "**" + ghostAbility.getName() + "**" + "\n" + ghostAbility.getDescription() + "\n" + "\n");
             }
         }
-        messageText.append(Constants.SELECTED_MODE_BUTTON_INFORMATION_GHOST_MESSAGE);
+        messageText.append(Constants.INFORMATION_MODE_GHOST_MESSAGE);
 
         SendMessage message = new SendMessage();
         message.setText(messageText.toString());
