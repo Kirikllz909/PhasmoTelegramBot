@@ -20,7 +20,7 @@ public class FilterByName implements BasicFilter {
 
     @Override
     public List<Ghost> filter(List<Ghost> ghosts) {
-        if (Name == null || Name.equals(""))
+        if (Name == null || Name.trim().equals(""))
             throw new GhostNameNotDefinedException("Name of the ghost isn't defined");
 
         List<Ghost> filteredGhosts = new ArrayList<Ghost>();

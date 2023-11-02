@@ -5,8 +5,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import com.phasmoghostbot.telegrambot.api.dataLoader.GenerateXMLFilePath;
-import com.phasmoghostbot.telegrambot.impl.dataLoader.GhostLoader;
+import com.phasmoghostbot.telegrambot.constants.Constants;
 import com.phasmoghostbot.telegrambot.models.Ghost;
 
 public class FilterByDefaultSpeedTest {
@@ -15,10 +14,9 @@ public class FilterByDefaultSpeedTest {
 
     @Test
     void testFilter() {
-        List<Ghost> ghostList = new GhostLoader().load(GenerateXMLFilePath.getFileLocation());
         FilterByDefaultSpeed filter = new FilterByDefaultSpeed();
 
-        List<Ghost> filteredGhost = filter.filter(ghostList);
+        List<Ghost> filteredGhost = filter.filter(Constants.GHOST_LIST);
 
         Assertions.assertEquals(EXPECTED_GHOST_COUNT, filteredGhost.size());
     }

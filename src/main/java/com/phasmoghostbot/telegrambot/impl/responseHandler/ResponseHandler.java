@@ -67,16 +67,26 @@ public class ResponseHandler {
                 GhostSolverModeHandler.replyToSetSpeedMode(sender, chatId, ghostSearchParameters);
                 break;
             case Constants.GHOST_SOLVER_SET_BLINK_FREQUENCY_MODE_CALLBACK:
+                GhostSolverModeHandler.replyToSetBlinkFrequencyMode(sender, chatId, ghostSearchParameters);
                 break;
             case Constants.GHOST_SOLVER_SET_BLINK_FREQUENCY_ACTION_CALLBACK:
+                GhostSolverModeHandler.changeBlinkFrequency(chatId, buttonCallbackData.split(" ")[1],
+                        ghostSearchParameters);
+                GhostSolverModeHandler.replyToSetBlinkFrequencyMode(sender, chatId, ghostSearchParameters);
                 break;
             case Constants.GHOST_SOLVER_SET_CURRENT_SANITY_MODE_CALLBACK:
+                GhostSolverModeHandler.replyToSetSanityMode(sender, chatId, ghostSearchParameters);
                 break;
             case Constants.GHOST_SOLVER_SET_CURRENT_SANITY_ACTION_CALLBACK:
+                GhostSolverModeHandler.changeSanity(chatId, buttonCallbackData.split(" ")[1], ghostSearchParameters);
+                GhostSolverModeHandler.replyToSetSanityMode(sender, chatId, ghostSearchParameters);
                 break;
             case Constants.GHOST_SOLVER_SET_EVIDENCES_MODE_CALLBACK:
+                GhostSolverModeHandler.replyToSetEvidences(sender, chatId, ghostSearchParameters);
                 break;
             case Constants.GHOST_SOLVER_SET_EVIDENCES_ACTION_CALLBACK:
+                GhostSolverModeHandler.changeEvidence(chatId, buttonCallbackData.split(" ")[1], ghostSearchParameters);
+                GhostSolverModeHandler.replyToSetEvidences(sender, chatId, ghostSearchParameters);
                 break;
             case Constants.GHOST_SOLVER_GET_POSSIBLE_GHOSTS_CALLBACK:
                 break;
