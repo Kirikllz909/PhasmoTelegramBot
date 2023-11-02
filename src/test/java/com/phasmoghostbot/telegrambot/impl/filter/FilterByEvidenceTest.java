@@ -17,6 +17,7 @@ public class FilterByEvidenceTest {
     private final Integer EXPECTED_EMF_ORB_GHOST_COUNT = 2;
     private final Integer EXPECTED_EMF_ORB_SPIRIT_BOX_GHOST_COUNT = 0;
     private final Integer EXPECTED_NONE_EVIDENCE_GHOST_COUNT = 24;
+    private final Integer EXPECTED_ORB_GHOST_COUNT = 11;
 
     @Test
     void testFilterEMF() {
@@ -39,6 +40,17 @@ public class FilterByEvidenceTest {
         List<Ghost> filteredGhosts = filter.filter(Constants.GHOST_LIST);
 
         Assertions.assertEquals(EXPECTED_EMF_ORB_GHOST_COUNT, filteredGhosts.size());
+    }
+
+    @Test
+    void testFilterOrb() {
+        List<Evidence> expectedEvidences = new ArrayList<>();
+        expectedEvidences.add(Constants.EVIDENCE_LIST.get(1));
+        BasicFilter filter = new FilterByEvidence(expectedEvidences);
+
+        List<Ghost> filteredGhosts = filter.filter(Constants.GHOST_LIST);
+
+        Assertions.assertEquals(EXPECTED_ORB_GHOST_COUNT, filteredGhosts.size());
     }
 
     @Test
