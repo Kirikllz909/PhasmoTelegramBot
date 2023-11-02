@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import com.phasmoghostbot.telegrambot.api.filter.exceptions.GhostNameNotDefinedException;
 import com.phasmoghostbot.telegrambot.constants.Constants;
 import com.phasmoghostbot.telegrambot.models.Ghost;
 
@@ -31,5 +32,26 @@ public class FilterByNameTest {
         List<Ghost> filteredGhost = filterByName.filter(Constants.GHOST_LIST);
 
         Assertions.assertEquals(EXPECTED_NONE_GHOST, filteredGhost.size());
+    }
+
+    @Test
+    void testFilterNullName() {
+        FilterByName filterByName = new FilterByName(null);
+
+        Assertions.assertThrows(GhostNameNotDefinedException.class, () -> filterByName.filter(Constants.GHOST_LIST));
+    }
+
+    @Test
+    void testFilterEmptyName() {
+        FilterByName filterByName = new FilterByName("              ");
+
+        Assertions.assertThrows(GhostNameNotDefinedException.class, () -> filterByName.filter(Constants.GHOST_LIST));
+    }
+
+    @Test
+    void testFilterOneLetterName() {
+        FilterByName filterByName = new FilterByName("        a      ");
+
+        Assertions.assertDoesNotThrow(() -> filterByName.filter(Constants.GHOST_LIST));
     }
 }
