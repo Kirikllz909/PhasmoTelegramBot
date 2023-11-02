@@ -75,8 +75,11 @@ public class ResponseHandler {
                 GhostSolverModeHandler.replyToSetBlinkFrequencyMode(sender, chatId, ghostSearchParameters);
                 break;
             case Constants.GHOST_SOLVER_SET_CURRENT_SANITY_MODE_CALLBACK:
+                GhostSolverModeHandler.replyToSetSanityMode(sender, chatId, ghostSearchParameters);
                 break;
             case Constants.GHOST_SOLVER_SET_CURRENT_SANITY_ACTION_CALLBACK:
+                GhostSolverModeHandler.changeSanity(chatId, buttonCallbackData.split(" ")[1], ghostSearchParameters);
+                GhostSolverModeHandler.replyToSetSanityMode(sender, chatId, ghostSearchParameters);
                 break;
             case Constants.GHOST_SOLVER_SET_EVIDENCES_MODE_CALLBACK:
                 break;
