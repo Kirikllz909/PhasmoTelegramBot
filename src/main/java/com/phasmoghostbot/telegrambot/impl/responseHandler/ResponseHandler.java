@@ -19,9 +19,14 @@ public class ResponseHandler {
     private final SilentSender sender;
     private final Map<Long, GhostSearchParameters> ghostSearchParameters;
 
+    private InformationModeHandler informationModeHandler;
+    private GhostSolverModeHandler ghostSolverModeHandler;
+
     public ResponseHandler(SilentSender sender, DBContext db) {
         this.sender = sender;
         ghostSearchParameters = db.getMap(Constants.CHAT_SEARCH_PARAMS);
+        ghostSolverModeHandler = new GhostSolverModeHandler(sender, ghostSearchParameters);
+        informationModeHandler = new InformationModeHandler(sender);
     }
 
     public void replyToStart(long chatId) {
@@ -41,52 +46,51 @@ public class ResponseHandler {
                 break;
 
             case Constants.INFORMATION_MODE_CALLBACK:
-                InformationModeHandler.replyToInformationMode(sender, chatId);
+                informationModeHandler.replyToInformationMode(chatId);
                 break;
             case Constants.INFORMATION_MODE_EVIDENCE_CALLBACK:
-                InformationModeHandler.replyToInformationEvidenceMode(sender, chatId);
+                informationModeHandler.replyToInformationEvidenceMode(chatId);
                 break;
             case Constants.INFORMATION_MODE_GHOST_CALLBACK:
-                InformationModeHandler.replyToInformationGhostMode(sender, chatId);
+                informationModeHandler.replyToInformationGhostMode(chatId);
                 break;
             case Constants.INFORMATION_MODE_SELECTED_EVIDENCE_CALLBACK:
-                InformationModeHandler.replyToSelectedEvidence(sender, chatId, buttonCallbackData.split(" ")[1]);
+                informationModeHandler.replyToSelectedEvidence(chatId, buttonCallbackData.split(" ")[1]);
                 break;
             case Constants.INFORMATION_MODE_SELECTED_GHOST_CALLBACK:
-                InformationModeHandler.replyToSelectedGhost(sender, chatId, buttonCallbackData.split(" ")[1]);
+                informationModeHandler.replyToSelectedGhost(chatId, buttonCallbackData.split(" ")[1]);
                 break;
 
             case Constants.GHOST_SOLVER_CALLBACK:
-                GhostSolverModeHandler.replyToGhostSolverSelected(sender, chatId, ghostSearchParameters);
+                ghostSolverModeHandler.replyToGhostSolverSelected(chatId);
                 break;
             case Constants.GHOST_SOLVER_SET_SPEED_MODE_CALLBACK:
-                GhostSolverModeHandler.replyToSetSpeedMode(sender, chatId, ghostSearchParameters);
+                ghostSolverModeHandler.replyToSetSpeedMode(chatId);
                 break;
             case Constants.GHOST_SOLVER_SET_SPEED_ACTION_CALLBACK:
-                GhostSolverModeHandler.changeSpeed(chatId, buttonCallbackData.split(" ")[1], ghostSearchParameters);
-                GhostSolverModeHandler.replyToSetSpeedMode(sender, chatId, ghostSearchParameters);
+                ghostSolverModeHandler.changeSpeed(chatId, buttonCallbackData.split(" ")[1]);
+                ghostSolverModeHandler.replyToSetSpeedMode(chatId);
                 break;
             case Constants.GHOST_SOLVER_SET_BLINK_FREQUENCY_MODE_CALLBACK:
-                GhostSolverModeHandler.replyToSetBlinkFrequencyMode(sender, chatId, ghostSearchParameters);
+                ghostSolverModeHandler.replyToSetBlinkFrequencyMode(chatId);
                 break;
             case Constants.GHOST_SOLVER_SET_BLINK_FREQUENCY_ACTION_CALLBACK:
-                GhostSolverModeHandler.changeBlinkFrequency(chatId, buttonCallbackData.split(" ")[1],
-                        ghostSearchParameters);
-                GhostSolverModeHandler.replyToSetBlinkFrequencyMode(sender, chatId, ghostSearchParameters);
+                ghostSolverModeHandler.changeBlinkFrequency(chatId, buttonCallbackData.split(" ")[1]);
+                ghostSolverModeHandler.replyToSetBlinkFrequencyMode(chatId);
                 break;
             case Constants.GHOST_SOLVER_SET_CURRENT_SANITY_MODE_CALLBACK:
-                GhostSolverModeHandler.replyToSetSanityMode(sender, chatId, ghostSearchParameters);
+                ghostSolverModeHandler.replyToSetSanityMode(chatId);
                 break;
             case Constants.GHOST_SOLVER_SET_CURRENT_SANITY_ACTION_CALLBACK:
-                GhostSolverModeHandler.changeSanity(chatId, buttonCallbackData.split(" ")[1], ghostSearchParameters);
-                GhostSolverModeHandler.replyToSetSanityMode(sender, chatId, ghostSearchParameters);
+                ghostSolverModeHandler.changeSanity(chatId, buttonCallbackData.split(" ")[1]);
+                ghostSolverModeHandler.replyToSetSanityMode(chatId);
                 break;
             case Constants.GHOST_SOLVER_SET_EVIDENCES_MODE_CALLBACK:
-                GhostSolverModeHandler.replyToSetEvidences(sender, chatId, ghostSearchParameters);
+                ghostSolverModeHandler.replyToSetEvidences(chatId);
                 break;
             case Constants.GHOST_SOLVER_SET_EVIDENCES_ACTION_CALLBACK:
-                GhostSolverModeHandler.changeEvidence(chatId, buttonCallbackData.split(" ")[1], ghostSearchParameters);
-                GhostSolverModeHandler.replyToSetEvidences(sender, chatId, ghostSearchParameters);
+                ghostSolverModeHandler.changeEvidence(chatId, buttonCallbackData.split(" ")[1]);
+                ghostSolverModeHandler.replyToSetEvidences(chatId);
                 break;
             case Constants.GHOST_SOLVER_GET_POSSIBLE_GHOSTS_CALLBACK:
                 break;
