@@ -7,7 +7,7 @@ import com.phasmoghostbot.telegrambot.api.filter.BasicFilter;
 import com.phasmoghostbot.telegrambot.models.Ghost;
 
 public class Filter {
-    public List<Ghost> filter(List<Ghost> ghosts, List<BasicFilter> rules) {
+    public static List<Ghost> filter(List<Ghost> ghosts, List<BasicFilter> rules) {
         List<Ghost> ghostsAfterFilter = new ArrayList<>(ghosts);
         for (BasicFilter rule : rules) {
             ghostsAfterFilter = rule.filter(ghostsAfterFilter);
