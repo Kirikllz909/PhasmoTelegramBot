@@ -21,7 +21,7 @@
     <!--Definition
     of type GhostEvidencesType-->
     <xs:complexType name="GhostEvidencesType">
-        <xs:choice minOccurs="1" maxOccurs="3">
+        <xs:choice minOccurs="0" maxOccurs="4">
             <xs:element name="Evidence" type="EvidenceType" />
         </xs:choice>
     </xs:complexType>
