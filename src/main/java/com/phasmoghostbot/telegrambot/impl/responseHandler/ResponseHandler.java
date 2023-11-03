@@ -80,8 +80,7 @@ public class ResponseHandler {
                 ghostSolverModeHandler.replyToSetSanityMode(chatId);
                 break;
             case Constants.GHOST_SOLVER_SET_CURRENT_SANITY_ACTION_CALLBACK:
-                ghostSolverModeHandler.changeSanity(chatId, buttonCallbackData.split(" ")[1]);
-                ghostSolverModeHandler.replyToSetSanityMode(chatId);
+                ghostSolverModeHandler.replyToSetSanityAction(chatId, buttonCallbackData.split(" ")[1]);
                 break;
             case Constants.GHOST_SOLVER_SET_EVIDENCES_MODE_CALLBACK:
                 ghostSolverModeHandler.replyToSetEvidences(chatId);

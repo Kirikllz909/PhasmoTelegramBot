@@ -123,7 +123,12 @@ public class GhostSolverModeHandler {
         sender.execute(message);
     }
 
-    public void changeSanity(long chatId, String newSanity) {
+    public void replyToSetSanityAction(long chatId, String newSanity) {
+        changeSanity(chatId, newSanity);
+        replyToSetSanityMode(chatId);
+    }
+
+    private void changeSanity(long chatId, String newSanity) {
 
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
 
