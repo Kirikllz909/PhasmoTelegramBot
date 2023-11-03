@@ -74,7 +74,12 @@ public class GhostSolverModeHandler {
         sender.execute(message);
     }
 
-    public void changeSpeed(long chatId, String newSpeed) {
+    public void replyToChangeSpeedAction(long chatId, String newSpeed) {
+        changeSpeed(chatId, newSpeed);
+        replyToSetSpeedMode(chatId);
+    }
+
+    private void changeSpeed(long chatId, String newSpeed) {
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
 
         parameters.setSpeed(newSpeed);

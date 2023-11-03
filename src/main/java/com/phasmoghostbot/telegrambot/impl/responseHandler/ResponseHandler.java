@@ -68,8 +68,7 @@ public class ResponseHandler {
                 ghostSolverModeHandler.replyToSetSpeedMode(chatId);
                 break;
             case Constants.GHOST_SOLVER_SET_SPEED_ACTION_CALLBACK:
-                ghostSolverModeHandler.changeSpeed(chatId, buttonCallbackData.split(" ")[1]);
-                ghostSolverModeHandler.replyToSetSpeedMode(chatId);
+                ghostSolverModeHandler.replyToChangeSpeedAction(chatId, buttonCallbackData.split(" ")[1]);
                 break;
             case Constants.GHOST_SOLVER_SET_BLINK_FREQUENCY_MODE_CALLBACK:
                 ghostSolverModeHandler.replyToSetBlinkFrequencyMode(chatId);
