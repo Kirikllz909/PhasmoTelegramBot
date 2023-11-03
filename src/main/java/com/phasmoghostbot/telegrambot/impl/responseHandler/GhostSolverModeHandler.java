@@ -3,6 +3,7 @@ package com.phasmoghostbot.telegrambot.impl.responseHandler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 import org.telegram.abilitybots.api.sender.SilentSender;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -159,20 +160,42 @@ public class GhostSolverModeHandler {
         sender.execute(message);
     }
 
-    public void changeEvidence(long chatId, String evidenceId) {
+    public void replyToSetEvidenceAction(long chatId, String evidenceId) {
+        changeEvidenceState(chatId, evidenceId);
+        replyToSetEvidences(chatId);
+    }
+
+    private void changeEvidenceState(long chatId, String evidenceId) {
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
         List<Evidence> evidenceList = parameters.getEvidences();
+
+        boolean isEvidenceInList = false;
 
         for (int i = 0; i < evidenceList.size(); i++) {
             Evidence ev = evidenceList.get(i);
             if (ev.getId() == evidenceId) {
                 evidenceList.remove(i);
+                isEvidenceInList = true;
                 break;
             }
         }
+
+        if (!isEvidenceInList) {
+            evidenceList.add(findEvidenceById(evidenceId));
+        }
+
         parameters.setEvidences(evidenceList);
 
         ghostSearchParameters.put(chatId, parameters);
+    }
+
+    private Evidence findEvidenceById(String id) {
+        Predicate<Evidence> equalId = (ev) -> {
+            if (ev.getId() == id)
+                return true;
+            return false;
+        };
+        return Constants.EVIDENCE_LIST.stream().filter(equalId).toList().get(0);
     }
 
     public void replyToGetGhosts(long chatId) {
