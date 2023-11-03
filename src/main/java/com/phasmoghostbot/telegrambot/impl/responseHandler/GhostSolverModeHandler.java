@@ -98,7 +98,12 @@ public class GhostSolverModeHandler {
         sender.execute(message);
     }
 
-    public void changeBlinkFrequency(long chatId, String newBlinkFrequency) {
+    public void replyToChangeBlinkFrequencyAction(long chatId, String newBlinkFrequency) {
+        changeBlinkFrequency(chatId, newBlinkFrequency);
+        replyToSetBlinkFrequencyMode(chatId);
+    }
+
+    private void changeBlinkFrequency(long chatId, String newBlinkFrequency) {
 
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
 
