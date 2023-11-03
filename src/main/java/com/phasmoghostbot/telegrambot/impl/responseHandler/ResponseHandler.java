@@ -86,8 +86,7 @@ public class ResponseHandler {
                 ghostSolverModeHandler.replyToSetEvidences(chatId);
                 break;
             case Constants.GHOST_SOLVER_SET_EVIDENCES_ACTION_CALLBACK:
-                ghostSolverModeHandler.changeEvidence(chatId, buttonCallbackData.split(" ")[1]);
-                ghostSolverModeHandler.replyToSetEvidences(chatId);
+                ghostSolverModeHandler.replyToSetEvidenceAction(chatId, buttonCallbackData.split(" ")[1]);
                 break;
             case Constants.GHOST_SOLVER_GET_POSSIBLE_GHOSTS_CALLBACK:
                 break;
