@@ -14,8 +14,16 @@ import com.phasmoghostbot.telegrambot.models.Evidence;
 import com.phasmoghostbot.telegrambot.models.Ghost;
 import com.phasmoghostbot.telegrambot.models.HuntStartingCondition;
 
+import lombok.AllArgsConstructor;
+import lombok.Setter;
+
+@AllArgsConstructor
+@Setter
 public class InformationModeHandler {
-    public static void replyToInformationMode(SilentSender sender, Long chatId) {
+
+    private SilentSender sender;
+
+    public void replyToInformationMode(Long chatId) {
         SendMessage message = new SendMessage();
         message.setText(Constants.INFORMATION_MODE_MESSAGE);
         message.setReplyMarkup(new SelectWhichInformationKeyboardFactory().generateKeyboard());
@@ -24,7 +32,7 @@ public class InformationModeHandler {
         sender.execute(message);
     }
 
-    public static void replyToInformationEvidenceMode(SilentSender sender, Long chatId) {
+    public void replyToInformationEvidenceMode(Long chatId) {
         SendMessage message = new SendMessage();
         message.setText(Constants.INFORMATION_MODE_EVIDENCE_MESSAGE);
         message.setChatId(chatId);
@@ -33,7 +41,7 @@ public class InformationModeHandler {
         sender.execute(message);
     }
 
-    public static void replyToInformationGhostMode(SilentSender sender, long chatId) {
+    public void replyToInformationGhostMode(long chatId) {
         SendMessage message = new SendMessage();
         message.setText(Constants.INFORMATION_MODE_GHOST_MESSAGE);
         message.setChatId(chatId);
@@ -42,7 +50,7 @@ public class InformationModeHandler {
         sender.execute(message);
     }
 
-    public static void replyToSelectedEvidence(SilentSender sender, long chatId, String evidenceName) {
+    public void replyToSelectedEvidence(long chatId, String evidenceName) {
         Evidence evidence = findEvidenceByName(evidenceName);
         StringBuilder messageText = new StringBuilder();
 
@@ -60,7 +68,7 @@ public class InformationModeHandler {
         sender.execute(message);
     }
 
-    public static void replyToSelectedGhost(SilentSender sender, long chatId, String ghostName) {
+    public void replyToSelectedGhost(long chatId, String ghostName) {
         Ghost ghost = findGhostByName(ghostName);
         StringBuilder messageText = new StringBuilder();
 
@@ -100,7 +108,7 @@ public class InformationModeHandler {
         sender.execute(message);
     }
 
-    private static Ghost findGhostByName(String ghostName) {
+    private Ghost findGhostByName(String ghostName) {
         Ghost ghost = null;
         for (int i = 0; i < Constants.GHOST_LIST.size(); i++) {
             Ghost currentGhost = Constants.GHOST_LIST.get(i);
@@ -112,7 +120,7 @@ public class InformationModeHandler {
         return ghost;
     }
 
-    private static Evidence findEvidenceByName(String evidenceName) {
+    private Evidence findEvidenceByName(String evidenceName) {
         Evidence evidence = null;
         for (int i = 0; i < Constants.GHOST_LIST.size(); i++) {
             Evidence currentEvidence = Constants.EVIDENCE_LIST.get(i);

@@ -1060,6 +1060,9 @@
                     <RefId>SpiritBox</RefId>
                 </Evidence>
                 <Evidence>
+                    <RefId>Orb</RefId>
+                </Evidence>
+                <Evidence>
                     <RefId>Freezing</RefId>
                 </Evidence>
                 <Evidence>

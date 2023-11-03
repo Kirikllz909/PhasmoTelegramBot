@@ -1,23 +1,42 @@
 package com.phasmoghostbot.telegrambot.impl.responseHandler;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 import org.telegram.abilitybots.api.sender.SilentSender;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
+import com.phasmoghostbot.telegrambot.api.filter.BasicFilter;
 import com.phasmoghostbot.telegrambot.constants.Constants;
+import com.phasmoghostbot.telegrambot.impl.filter.Filter;
+import com.phasmoghostbot.telegrambot.impl.filter.FilterByDefaultBlinkFrequency;
+import com.phasmoghostbot.telegrambot.impl.filter.FilterByDefaultSpeed;
+import com.phasmoghostbot.telegrambot.impl.filter.FilterByEvidence;
+import com.phasmoghostbot.telegrambot.impl.filter.FilterBySanity;
+import com.phasmoghostbot.telegrambot.impl.filter.FilterByUnstableSpeed;
+import com.phasmoghostbot.telegrambot.impl.filter.FilterByUnusualBlinkFrequency;
 import com.phasmoghostbot.telegrambot.impl.keyboardFactory.ghostSolver.BlinkFrequencyEditKeyboard;
 import com.phasmoghostbot.telegrambot.impl.keyboardFactory.ghostSolver.CurrentSanityEditKeyboard;
 import com.phasmoghostbot.telegrambot.impl.keyboardFactory.ghostSolver.EvidenceEditKeyboard;
 import com.phasmoghostbot.telegrambot.impl.keyboardFactory.ghostSolver.GhostSolverActionsKeyboard;
 import com.phasmoghostbot.telegrambot.impl.keyboardFactory.ghostSolver.SpeedEditKeyboard;
 import com.phasmoghostbot.telegrambot.models.Evidence;
+import com.phasmoghostbot.telegrambot.models.Ghost;
 import com.phasmoghostbot.telegrambot.models.GhostSearchParameters;
 
+import lombok.AllArgsConstructor;
+import lombok.Setter;
+
+@AllArgsConstructor
+@Setter
 public class GhostSolverModeHandler {
-    public static void replyToGhostSolverSelected(SilentSender sender, Long chatId,
-            Map<Long, GhostSearchParameters> ghostSearchParameters) {
+
+    private SilentSender sender;
+    private Map<Long, GhostSearchParameters> ghostSearchParameters;
+
+    public void replyToGhostSolverSelected(Long chatId) {
         SendMessage message = new SendMessage();
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
 
@@ -45,8 +64,7 @@ public class GhostSolverModeHandler {
         sender.execute(message);
     }
 
-    public static void replyToSetSpeedMode(SilentSender sender, long chatId,
-            Map<Long, GhostSearchParameters> ghostSearchParameters) {
+    public void replyToSetSpeedMode(long chatId) {
         SendMessage message = new SendMessage();
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
 
@@ -57,8 +75,12 @@ public class GhostSolverModeHandler {
         sender.execute(message);
     }
 
-    public static void changeSpeed(long chatId, String newSpeed,
-            Map<Long, GhostSearchParameters> ghostSearchParameters) {
+    public void replyToChangeSpeedAction(long chatId, String newSpeed) {
+        changeSpeed(chatId, newSpeed);
+        replyToSetSpeedMode(chatId);
+    }
+
+    private void changeSpeed(long chatId, String newSpeed) {
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
 
         parameters.setSpeed(newSpeed);
@@ -66,8 +88,7 @@ public class GhostSolverModeHandler {
         ghostSearchParameters.put(chatId, parameters);
     }
 
-    public static void replyToSetBlinkFrequencyMode(SilentSender sender, long chatId,
-            Map<Long, GhostSearchParameters> ghostSearchParameters) {
+    public void replyToSetBlinkFrequencyMode(long chatId) {
         SendMessage message = new SendMessage();
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
 
@@ -78,8 +99,12 @@ public class GhostSolverModeHandler {
         sender.execute(message);
     }
 
-    public static void changeBlinkFrequency(long chatId, String newBlinkFrequency,
-            Map<Long, GhostSearchParameters> ghostSearchParameters) {
+    public void replyToChangeBlinkFrequencyAction(long chatId, String newBlinkFrequency) {
+        changeBlinkFrequency(chatId, newBlinkFrequency);
+        replyToSetBlinkFrequencyMode(chatId);
+    }
+
+    private void changeBlinkFrequency(long chatId, String newBlinkFrequency) {
 
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
 
@@ -88,8 +113,7 @@ public class GhostSolverModeHandler {
         ghostSearchParameters.put(chatId, parameters);
     }
 
-    public static void replyToSetSanityMode(SilentSender sender, long chatId,
-            Map<Long, GhostSearchParameters> ghostSearchParameters) {
+    public void replyToSetSanityMode(long chatId) {
         SendMessage message = new SendMessage();
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
 
@@ -100,8 +124,12 @@ public class GhostSolverModeHandler {
         sender.execute(message);
     }
 
-    public static void changeSanity(long chatId, String newSanity,
-            Map<Long, GhostSearchParameters> ghostSearchParameters) {
+    public void replyToSetSanityAction(long chatId, String newSanity) {
+        changeSanity(chatId, newSanity);
+        replyToSetSanityMode(chatId);
+    }
+
+    private void changeSanity(long chatId, String newSanity) {
 
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
 
@@ -110,8 +138,7 @@ public class GhostSolverModeHandler {
         ghostSearchParameters.put(chatId, parameters);
     }
 
-    public static void replyToSetEvidences(SilentSender sender, long chatId,
-            Map<Long, GhostSearchParameters> ghostSearchParameters) {
+    public void replyToSetEvidences(long chatId) {
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
         SendMessage message = new SendMessage();
 
@@ -133,20 +160,68 @@ public class GhostSolverModeHandler {
         sender.execute(message);
     }
 
-    public static void changeEvidence(long chatId, String evidenceId,
-            Map<Long, GhostSearchParameters> ghostSearchParameters) {
+    public void replyToSetEvidenceAction(long chatId, String evidenceId) {
+        changeEvidenceState(chatId, evidenceId);
+        replyToSetEvidences(chatId);
+    }
+
+    private void changeEvidenceState(long chatId, String evidenceId) {
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
         List<Evidence> evidenceList = parameters.getEvidences();
+
+        boolean isEvidenceInList = false;
 
         for (int i = 0; i < evidenceList.size(); i++) {
             Evidence ev = evidenceList.get(i);
             if (ev.getId() == evidenceId) {
                 evidenceList.remove(i);
+                isEvidenceInList = true;
                 break;
             }
         }
+
+        if (!isEvidenceInList) {
+            evidenceList.add(findEvidenceById(evidenceId));
+        }
+
         parameters.setEvidences(evidenceList);
 
         ghostSearchParameters.put(chatId, parameters);
+    }
+
+    private Evidence findEvidenceById(String id) {
+        Predicate<Evidence> equalId = (ev) -> {
+            if (ev.getId() == id)
+                return true;
+            return false;
+        };
+        return Constants.EVIDENCE_LIST.stream().filter(equalId).toList().get(0);
+    }
+
+    public void replyToGetGhosts(long chatId) {
+        GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
+        List<Ghost> filteredGhosts = findGhostsBySearchParameters(parameters);
+
+    }
+
+    private List<Ghost> findGhostsBySearchParameters(GhostSearchParameters parameters) {
+        List<BasicFilter> filters = new ArrayList<>();
+
+        // Select which filter use for the speed
+        if (parameters.getSpeed().toLowerCase().equals("default"))
+            filters.add(new FilterByDefaultSpeed());
+        else
+            filters.add(new FilterByUnstableSpeed());
+
+        // Select which filter use for the blink frequency
+        if (parameters.getBlinkFrequency().toLowerCase().equals("default"))
+            filters.add(new FilterByDefaultBlinkFrequency());
+        else
+            filters.add(new FilterByUnusualBlinkFrequency());
+
+        filters.add(new FilterBySanity(parameters.getCurrentSanity()));
+        filters.add(new FilterByEvidence(parameters.getEvidences()));
+
+        return Filter.filter(Constants.GHOST_LIST, filters);
     }
 }
