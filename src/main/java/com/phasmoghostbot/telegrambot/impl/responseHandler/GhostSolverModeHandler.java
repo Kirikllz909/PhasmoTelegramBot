@@ -17,6 +17,7 @@ import com.phasmoghostbot.telegrambot.impl.filter.FilterByEvidence;
 import com.phasmoghostbot.telegrambot.impl.filter.FilterBySanity;
 import com.phasmoghostbot.telegrambot.impl.filter.FilterByUnstableSpeed;
 import com.phasmoghostbot.telegrambot.impl.filter.FilterByUnusualBlinkFrequency;
+import com.phasmoghostbot.telegrambot.impl.keyboardFactory.ghostSolver.BackButtonKeyboard;
 import com.phasmoghostbot.telegrambot.impl.keyboardFactory.ghostSolver.BlinkFrequencyEditKeyboard;
 import com.phasmoghostbot.telegrambot.impl.keyboardFactory.ghostSolver.CurrentSanityEditKeyboard;
 import com.phasmoghostbot.telegrambot.impl.keyboardFactory.ghostSolver.EvidenceEditKeyboard;
@@ -202,6 +203,19 @@ public class GhostSolverModeHandler {
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
         List<Ghost> filteredGhosts = findGhostsBySearchParameters(parameters);
 
+        StringBuilder messageText = new StringBuilder();
+
+        messageText.append("All possible ghosts: \n");
+        for (int i = 0; i < filteredGhosts.size(); i++) {
+            messageText.append(filteredGhosts.get(i).getName() + "\n");
+        }
+
+        SendMessage message = new SendMessage();
+        message.setChatId(chatId);
+        message.setText(messageText.toString());
+        message.setReplyMarkup(new BackButtonKeyboard().generateKeyboard());
+
+        sender.execute(message);
     }
 
     private List<Ghost> findGhostsBySearchParameters(GhostSearchParameters parameters) {

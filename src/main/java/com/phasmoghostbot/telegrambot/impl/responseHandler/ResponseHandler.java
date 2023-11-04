@@ -2,8 +2,6 @@ package com.phasmoghostbot.telegrambot.impl.responseHandler;
 
 import java.util.Map;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.telegram.abilitybots.api.db.DBContext;
 import org.telegram.abilitybots.api.sender.SilentSender;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -13,8 +11,6 @@ import com.phasmoghostbot.telegrambot.impl.keyboardFactory.selection.SelectKeybo
 import com.phasmoghostbot.telegrambot.models.GhostSearchParameters;
 
 public class ResponseHandler {
-
-    private final Logger logger = LogManager.getLogger(ResponseHandler.class);
 
     private final SilentSender sender;
     private final Map<Long, GhostSearchParameters> ghostSearchParameters;
@@ -39,7 +35,6 @@ public class ResponseHandler {
     }
 
     public void replyToButtons(long chatId, String buttonCallbackData) {
-        // TODO Add ghost solver functionality
         switch (buttonCallbackData.split(" ")[0]) {
             case Constants.START_MODE:
                 replyToStart(chatId);
@@ -89,6 +84,7 @@ public class ResponseHandler {
                 ghostSolverModeHandler.replyToSetEvidenceAction(chatId, buttonCallbackData.split(" ")[1]);
                 break;
             case Constants.GHOST_SOLVER_GET_POSSIBLE_GHOSTS_CALLBACK:
+                ghostSolverModeHandler.replyToGetGhosts(chatId);
                 break;
         }
     }
