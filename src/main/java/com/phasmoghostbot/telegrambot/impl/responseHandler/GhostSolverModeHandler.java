@@ -6,7 +6,8 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 import org.telegram.abilitybots.api.sender.SilentSender;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 
 import com.phasmoghostbot.telegrambot.api.filter.BasicFilter;
 import com.phasmoghostbot.telegrambot.constants.Constants;
@@ -37,8 +38,8 @@ public class GhostSolverModeHandler {
     private SilentSender sender;
     private Map<Long, GhostSearchParameters> ghostSearchParameters;
 
-    public void replyToGhostSolverSelected(Long chatId) {
-        SendMessage message = new SendMessage();
+    public void replyToGhostSolverSelected(Long chatId, int messageId) {
+        EditMessageText message = new EditMessageText();
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
 
         if (parameters == null) {
@@ -59,26 +60,28 @@ public class GhostSolverModeHandler {
             messageText.append("No evidences");
 
         message.setChatId(chatId);
+        message.setMessageId(messageId);
         message.setText(messageText.toString());
-        message.setReplyMarkup(new GhostSolverActionsKeyboard().generateKeyboard());
+        message.setReplyMarkup((InlineKeyboardMarkup) new GhostSolverActionsKeyboard().generateKeyboard());
 
         sender.execute(message);
     }
 
-    public void replyToSetSpeedMode(long chatId) {
-        SendMessage message = new SendMessage();
+    public void replyToSetSpeedMode(long chatId, int messageId) {
+        EditMessageText message = new EditMessageText();
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
 
         message.setChatId(chatId);
+        message.setMessageId(messageId);
         message.setText("Current Speed: " + parameters.getSpeed());
-        message.setReplyMarkup(new SpeedEditKeyboard().generateKeyboard());
+        message.setReplyMarkup((InlineKeyboardMarkup) new SpeedEditKeyboard().generateKeyboard());
 
         sender.execute(message);
     }
 
-    public void replyToChangeSpeedAction(long chatId, String newSpeed) {
+    public void replyToChangeSpeedAction(long chatId, int messageId, String newSpeed) {
         changeSpeed(chatId, newSpeed);
-        replyToSetSpeedMode(chatId);
+        replyToSetSpeedMode(chatId, messageId);
     }
 
     private void changeSpeed(long chatId, String newSpeed) {
@@ -89,20 +92,21 @@ public class GhostSolverModeHandler {
         ghostSearchParameters.put(chatId, parameters);
     }
 
-    public void replyToSetBlinkFrequencyMode(long chatId) {
-        SendMessage message = new SendMessage();
+    public void replyToSetBlinkFrequencyMode(long chatId, int messageId) {
+        EditMessageText message = new EditMessageText();
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
 
         message.setChatId(chatId);
+        message.setMessageId(messageId);
         message.setText("Current blink frequency: " + parameters.getBlinkFrequency());
-        message.setReplyMarkup(new BlinkFrequencyEditKeyboard().generateKeyboard());
+        message.setReplyMarkup((InlineKeyboardMarkup) new BlinkFrequencyEditKeyboard().generateKeyboard());
 
         sender.execute(message);
     }
 
-    public void replyToChangeBlinkFrequencyAction(long chatId, String newBlinkFrequency) {
+    public void replyToChangeBlinkFrequencyAction(long chatId, int messageId, String newBlinkFrequency) {
         changeBlinkFrequency(chatId, newBlinkFrequency);
-        replyToSetBlinkFrequencyMode(chatId);
+        replyToSetBlinkFrequencyMode(chatId, messageId);
     }
 
     private void changeBlinkFrequency(long chatId, String newBlinkFrequency) {
@@ -114,20 +118,21 @@ public class GhostSolverModeHandler {
         ghostSearchParameters.put(chatId, parameters);
     }
 
-    public void replyToSetSanityMode(long chatId) {
-        SendMessage message = new SendMessage();
+    public void replyToSetSanityMode(long chatId, int messageId) {
+        EditMessageText message = new EditMessageText();
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
 
         message.setChatId(chatId);
+        message.setMessageId(messageId);
         message.setText("Current sanity: " + parameters.getCurrentSanity());
-        message.setReplyMarkup(new CurrentSanityEditKeyboard().generateKeyboard());
+        message.setReplyMarkup((InlineKeyboardMarkup) new CurrentSanityEditKeyboard().generateKeyboard());
 
         sender.execute(message);
     }
 
-    public void replyToSetSanityAction(long chatId, String newSanity) {
+    public void replyToSetSanityAction(long chatId, int messageId, String newSanity) {
         changeSanity(chatId, newSanity);
-        replyToSetSanityMode(chatId);
+        replyToSetSanityMode(chatId, messageId);
     }
 
     private void changeSanity(long chatId, String newSanity) {
@@ -139,9 +144,9 @@ public class GhostSolverModeHandler {
         ghostSearchParameters.put(chatId, parameters);
     }
 
-    public void replyToSetEvidences(long chatId) {
+    public void replyToSetEvidences(long chatId, int messageId) {
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
-        SendMessage message = new SendMessage();
+        EditMessageText message = new EditMessageText();
 
         StringBuilder messageText = new StringBuilder();
 
@@ -155,15 +160,16 @@ public class GhostSolverModeHandler {
         }
 
         message.setChatId(chatId);
+        message.setMessageId(messageId);
         message.setText(messageText.toString());
-        message.setReplyMarkup(new EvidenceEditKeyboard().generateKeyboard());
+        message.setReplyMarkup((InlineKeyboardMarkup) new EvidenceEditKeyboard().generateKeyboard());
 
         sender.execute(message);
     }
 
-    public void replyToSetEvidenceAction(long chatId, String evidenceId) {
+    public void replyToSetEvidenceAction(long chatId, int messageId, String evidenceId) {
         changeEvidenceState(chatId, evidenceId);
-        replyToSetEvidences(chatId);
+        replyToSetEvidences(chatId, messageId);
     }
 
     private void changeEvidenceState(long chatId, String evidenceId) {
@@ -199,7 +205,7 @@ public class GhostSolverModeHandler {
         return Constants.EVIDENCE_LIST.stream().filter(equalId).toList().get(0);
     }
 
-    public void replyToGetGhosts(long chatId) {
+    public void replyToGetGhosts(long chatId, int messageId) {
         GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
         List<Ghost> filteredGhosts = findGhostsBySearchParameters(parameters);
 
@@ -210,10 +216,11 @@ public class GhostSolverModeHandler {
             messageText.append(filteredGhosts.get(i).getName() + "\n");
         }
 
-        SendMessage message = new SendMessage();
+        EditMessageText message = new EditMessageText();
         message.setChatId(chatId);
+        message.setMessageId(messageId);
         message.setText(messageText.toString());
-        message.setReplyMarkup(new BackButtonKeyboard().generateKeyboard());
+        message.setReplyMarkup((InlineKeyboardMarkup) new BackButtonKeyboard().generateKeyboard());
 
         sender.execute(message);
     }
