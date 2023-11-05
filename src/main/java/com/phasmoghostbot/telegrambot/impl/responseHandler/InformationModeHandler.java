@@ -3,7 +3,8 @@ package com.phasmoghostbot.telegrambot.impl.responseHandler;
 import java.util.List;
 
 import org.telegram.abilitybots.api.sender.SilentSender;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 
 import com.phasmoghostbot.telegrambot.constants.Constants;
 import com.phasmoghostbot.telegrambot.impl.keyboardFactory.information_mode.SelectEvidenceInformationKeyboardFactory;
@@ -23,34 +24,38 @@ public class InformationModeHandler {
 
     private SilentSender sender;
 
-    public void replyToInformationMode(Long chatId) {
-        SendMessage message = new SendMessage();
+    public void replyToInformationMode(Long chatId, int messageId) {
+        EditMessageText message = new EditMessageText();
         message.setText(Constants.INFORMATION_MODE_MESSAGE);
-        message.setReplyMarkup(new SelectWhichInformationKeyboardFactory().generateKeyboard());
+        message.setReplyMarkup((InlineKeyboardMarkup) new SelectWhichInformationKeyboardFactory().generateKeyboard());
         message.setChatId(chatId);
+        message.setMessageId(messageId);
 
         sender.execute(message);
     }
 
-    public void replyToInformationEvidenceMode(Long chatId) {
-        SendMessage message = new SendMessage();
+    public void replyToInformationEvidenceMode(Long chatId, int messageId) {
+        EditMessageText message = new EditMessageText();
         message.setText(Constants.INFORMATION_MODE_EVIDENCE_MESSAGE);
         message.setChatId(chatId);
-        message.setReplyMarkup(new SelectEvidenceInformationKeyboardFactory().generateKeyboard());
+        message.setMessageId(messageId);
+        message.setReplyMarkup(
+                (InlineKeyboardMarkup) new SelectEvidenceInformationKeyboardFactory().generateKeyboard());
 
         sender.execute(message);
     }
 
-    public void replyToInformationGhostMode(long chatId) {
-        SendMessage message = new SendMessage();
+    public void replyToInformationGhostMode(long chatId, int messageId) {
+        EditMessageText message = new EditMessageText();
         message.setText(Constants.INFORMATION_MODE_GHOST_MESSAGE);
         message.setChatId(chatId);
-        message.setReplyMarkup(new SelectGhostInformationKeyboardFactory().generateKeyboard());
+        message.setMessageId(messageId);
+        message.setReplyMarkup((InlineKeyboardMarkup) new SelectGhostInformationKeyboardFactory().generateKeyboard());
 
         sender.execute(message);
     }
 
-    public void replyToSelectedEvidence(long chatId, String evidenceName) {
+    public void replyToSelectedEvidence(long chatId, int messageId, String evidenceName) {
         Evidence evidence = findEvidenceByName(evidenceName);
         StringBuilder messageText = new StringBuilder();
 
@@ -60,15 +65,17 @@ public class InformationModeHandler {
             messageText.append("Name: " + evidence.getName() + "\n" + "Mechanics: " + evidence.getMechanics() + "\n");
         messageText.append(Constants.INFORMATION_MODE_EVIDENCE_MESSAGE);
 
-        SendMessage message = new SendMessage();
+        EditMessageText message = new EditMessageText();
         message.setText(messageText.toString());
         message.setChatId(chatId);
-        message.setReplyMarkup(new SelectEvidenceInformationKeyboardFactory().generateKeyboard());
+        message.setMessageId(messageId);
+        message.setReplyMarkup(
+                (InlineKeyboardMarkup) new SelectEvidenceInformationKeyboardFactory().generateKeyboard());
 
         sender.execute(message);
     }
 
-    public void replyToSelectedGhost(long chatId, String ghostName) {
+    public void replyToSelectedGhost(long chatId, int messageId, String ghostName) {
         Ghost ghost = findGhostByName(ghostName);
         StringBuilder messageText = new StringBuilder();
 
@@ -100,10 +107,11 @@ public class InformationModeHandler {
         }
         messageText.append(Constants.INFORMATION_MODE_GHOST_MESSAGE);
 
-        SendMessage message = new SendMessage();
+        EditMessageText message = new EditMessageText();
         message.setText(messageText.toString());
         message.setChatId(chatId);
-        message.setReplyMarkup(new SelectGhostInformationKeyboardFactory().generateKeyboard());
+        message.setMessageId(messageId);
+        message.setReplyMarkup((InlineKeyboardMarkup) new SelectGhostInformationKeyboardFactory().generateKeyboard());
 
         sender.execute(message);
     }

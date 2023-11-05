@@ -15,6 +15,7 @@ public interface Constants {
     String BACK_BUTTON_TEXT = "<< Back";
 
     String CHAT_SEARCH_PARAMS = "GHOST_SEARCH_PARAMS";
+    String FIRST_MESSAGES = "FIRST_MESSAGES";
 
     String START_MODE = "START";
     String START_DESCRIPTION = "Start ghost hunting or check the information about each ghost or evidence";

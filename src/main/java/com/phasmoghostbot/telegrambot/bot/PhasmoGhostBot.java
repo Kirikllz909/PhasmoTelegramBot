@@ -59,8 +59,7 @@ public class PhasmoGhostBot extends AbilityBot {
 
     public Reply replyToButtons() {
         BiConsumer<BaseAbilityBot, Update> action = (abilityBot, update) -> responseHandler.replyToButtons(
-                update.getMessage().getChatId(),
-                update.getCallbackQuery().getData());
+                update);
         return Reply.of(action, Arrays.asList(Flag.CALLBACK_QUERY));
     }
 }
