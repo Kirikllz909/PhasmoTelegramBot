@@ -29,6 +29,9 @@ public class GhostSolverActionsKeyboard implements KeyboardFactory {
         InlineKeyboardButton setEvidencesButton = generateKeyboardButton(
                 Constants.GHOST_SOLVER_SET_EVIDENCES_MODE_MESSAGE,
                 Constants.GHOST_SOLVER_SET_EVIDENCES_MODE_CALLBACK);
+        InlineKeyboardButton getGhostsButton = generateKeyboardButton(
+                Constants.GHOST_SOLVER_GET_POSSIBLE_GHOSTS_MESSAGE,
+                Constants.GHOST_SOLVER_GET_POSSIBLE_GHOSTS_CALLBACK);
         InlineKeyboardButton backButton = generateKeyboardButton(Constants.BACK_BUTTON_TEXT,
                 Constants.START_MODE);
 
@@ -36,6 +39,7 @@ public class GhostSolverActionsKeyboard implements KeyboardFactory {
         rows.add(List.of(setCurrentSanityButton));
         rows.add(List.of(setBlinkFrequencyButton));
         rows.add(List.of(setEvidencesButton));
+        rows.add(List.of(getGhostsButton));
         rows.add(List.of(backButton));
 
         markup.setKeyboard(rows);
