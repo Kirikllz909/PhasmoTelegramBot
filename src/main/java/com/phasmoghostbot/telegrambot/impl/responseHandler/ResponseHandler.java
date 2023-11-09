@@ -1,5 +1,6 @@
 package com.phasmoghostbot.telegrambot.impl.responseHandler;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -26,7 +27,7 @@ public class ResponseHandler {
 
     public ResponseHandler(SilentSender sender, DBContext db) {
         this.sender = sender;
-        ghostSearchParameters = db.getMap(Constants.CHAT_SEARCH_PARAMS);
+        ghostSearchParameters = new HashMap<>();
         firstMessagesId = db.getMap(Constants.FIRST_MESSAGES);
         ghostSolverModeHandler = new GhostSolverModeHandler(sender, ghostSearchParameters);
         informationModeHandler = new InformationModeHandler(sender);
@@ -61,7 +62,7 @@ public class ResponseHandler {
     }
 
     public void replyToButtons(Update update) {
-        long chatId = update.getMessage().getChatId();
+        long chatId = update.getCallbackQuery().getMessage().getChatId();
         int messageId = firstMessagesId.get(chatId);
         String buttonCallbackData = update.getCallbackQuery().getData();
         switch (buttonCallbackData.split(" ")[0]) {
