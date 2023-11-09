@@ -40,18 +40,14 @@ public class GhostSolverModeHandler {
 
     public void replyToGhostSolverSelected(Long chatId, int messageId) {
         EditMessageText message = new EditMessageText();
-        GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
-
-        if (parameters == null) {
-            parameters = new GhostSearchParameters();
-            ghostSearchParameters.put(chatId, parameters);
-        }
+        GhostSearchParameters parameters = getGhostSearchParameters(chatId);
 
         StringBuilder messageText = new StringBuilder();
         messageText.append(Constants.GHOST_SOLVER_MESSAGE + "\n");
         messageText.append("Current sanity = " + parameters.getCurrentSanity() + "\n");
         messageText.append("Speed = " + parameters.getSpeed() + "\n");
-        messageText.append("\nEvidences:  + \n");
+        messageText.append("Blink frequency = " + parameters.getBlinkFrequency() + "\n");
+        messageText.append("\nEvidences:   \n");
         if (parameters.getEvidences().size() > 0)
             for (Evidence evidence : parameters.getEvidences()) {
                 messageText.append(evidence.getName() + "\n");
@@ -69,7 +65,7 @@ public class GhostSolverModeHandler {
 
     public void replyToSetSpeedMode(long chatId, int messageId) {
         EditMessageText message = new EditMessageText();
-        GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
+        GhostSearchParameters parameters = getGhostSearchParameters(chatId);
 
         message.setChatId(chatId);
         message.setMessageId(messageId);
@@ -85,7 +81,7 @@ public class GhostSolverModeHandler {
     }
 
     private void changeSpeed(long chatId, String newSpeed) {
-        GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
+        GhostSearchParameters parameters = getGhostSearchParameters(chatId);
 
         parameters.setSpeed(newSpeed);
 
@@ -94,7 +90,7 @@ public class GhostSolverModeHandler {
 
     public void replyToSetBlinkFrequencyMode(long chatId, int messageId) {
         EditMessageText message = new EditMessageText();
-        GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
+        GhostSearchParameters parameters = getGhostSearchParameters(chatId);
 
         message.setChatId(chatId);
         message.setMessageId(messageId);
@@ -111,7 +107,7 @@ public class GhostSolverModeHandler {
 
     private void changeBlinkFrequency(long chatId, String newBlinkFrequency) {
 
-        GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
+        GhostSearchParameters parameters = getGhostSearchParameters(chatId);
 
         parameters.setBlinkFrequency(newBlinkFrequency);
 
@@ -120,7 +116,7 @@ public class GhostSolverModeHandler {
 
     public void replyToSetSanityMode(long chatId, int messageId) {
         EditMessageText message = new EditMessageText();
-        GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
+        GhostSearchParameters parameters = getGhostSearchParameters(chatId);
 
         message.setChatId(chatId);
         message.setMessageId(messageId);
@@ -137,7 +133,7 @@ public class GhostSolverModeHandler {
 
     private void changeSanity(long chatId, String newSanity) {
 
-        GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
+        GhostSearchParameters parameters = getGhostSearchParameters(chatId);
 
         parameters.setCurrentSanity(Integer.valueOf(newSanity));
 
@@ -145,7 +141,7 @@ public class GhostSolverModeHandler {
     }
 
     public void replyToSetEvidences(long chatId, int messageId) {
-        GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
+        GhostSearchParameters parameters = getGhostSearchParameters(chatId);
         EditMessageText message = new EditMessageText();
 
         StringBuilder messageText = new StringBuilder();
@@ -173,14 +169,14 @@ public class GhostSolverModeHandler {
     }
 
     private void changeEvidenceState(long chatId, String evidenceId) {
-        GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
+        GhostSearchParameters parameters = getGhostSearchParameters(chatId);
         List<Evidence> evidenceList = parameters.getEvidences();
 
         boolean isEvidenceInList = false;
 
         for (int i = 0; i < evidenceList.size(); i++) {
             Evidence ev = evidenceList.get(i);
-            if (ev.getId() == evidenceId) {
+            if (ev.getId().toLowerCase().equals(evidenceId.toLowerCase())) {
                 evidenceList.remove(i);
                 isEvidenceInList = true;
                 break;
@@ -198,7 +194,7 @@ public class GhostSolverModeHandler {
 
     private Evidence findEvidenceById(String id) {
         Predicate<Evidence> equalId = (ev) -> {
-            if (ev.getId() == id)
+            if (ev.getId().toLowerCase().equals(id.toLowerCase()))
                 return true;
             return false;
         };
@@ -206,7 +202,7 @@ public class GhostSolverModeHandler {
     }
 
     public void replyToGetGhosts(long chatId, int messageId) {
-        GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
+        GhostSearchParameters parameters = getGhostSearchParameters(chatId);
         List<Ghost> filteredGhosts = findGhostsBySearchParameters(parameters);
 
         StringBuilder messageText = new StringBuilder();
@@ -244,5 +240,14 @@ public class GhostSolverModeHandler {
         filters.add(new FilterByEvidence(parameters.getEvidences()));
 
         return Filter.filter(Constants.GHOST_LIST, filters);
+    }
+
+    private GhostSearchParameters getGhostSearchParameters(long chatId) {
+        GhostSearchParameters parameters = ghostSearchParameters.get(chatId);
+        if (parameters == null) {
+            parameters = new GhostSearchParameters();
+            ghostSearchParameters.put(chatId, parameters);
+        }
+        return parameters;
     }
 }

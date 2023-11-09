@@ -55,15 +55,14 @@ public class InformationModeHandler {
         sender.execute(message);
     }
 
-    public void replyToSelectedEvidence(long chatId, int messageId, String evidenceName) {
-        Evidence evidence = findEvidenceByName(evidenceName);
+    public void replyToSelectedEvidence(long chatId, int messageId, String evidenceId) {
+        Evidence evidence = findEvidenceById(evidenceId);
         StringBuilder messageText = new StringBuilder();
 
         if (evidence == null) {
             messageText.append("Wrong evidence name" + "\n");
         } else
             messageText.append("Name: " + evidence.getName() + "\n" + "Mechanics: " + evidence.getMechanics() + "\n");
-        messageText.append(Constants.INFORMATION_MODE_EVIDENCE_MESSAGE);
 
         EditMessageText message = new EditMessageText();
         message.setText(messageText.toString());
@@ -82,9 +81,9 @@ public class InformationModeHandler {
         if (ghost == null) {
             messageText.append("Wrong ghost name" + "\n");
         } else {
-            messageText.append("Name: " + ghost.getName() + "\n");
-            messageText.append("Blink frequency: " + ghost.getBlinkFrequency() + "\n");
-            messageText.append("Speed: " + ghost.getSpeed() + "\n");
+            messageText.append("Name: " + ghost.getName() + "\n" + "\n");
+            messageText.append("Blink frequency: " + ghost.getBlinkFrequency() + "\n" + "\n");
+            messageText.append("Speed: " + ghost.getSpeed() + "\n" + "\n");
 
             messageText.append("Evidences: " + "\n");
             List<Evidence> evidences = ghost.getGhostEvidences();
@@ -93,19 +92,18 @@ public class InformationModeHandler {
             }
 
             List<HuntStartingCondition> startingConditions = ghost.getHuntStartingSanity();
-            messageText.append("Hunt starting sanity and it's condition: " + "\n");
+            messageText.append("\n" + "Hunt starting sanity and it's condition: " + "\n");
             for (HuntStartingCondition startingCondition : startingConditions) {
                 messageText.append(startingCondition.getName() + ": " + startingCondition.getValue() + "\n");
             }
 
             List<Ability> ghostAbilities = ghost.getSpecialAbilities();
-            messageText.append("Ghost abilities and it's description: " + "\n");
+            messageText.append("\n" + "Ghost abilities and it's description: " + "\n");
             for (Ability ghostAbility : ghostAbilities) {
                 messageText.append(
                         "**" + ghostAbility.getName() + "**" + "\n" + ghostAbility.getDescription() + "\n" + "\n");
             }
         }
-        messageText.append(Constants.INFORMATION_MODE_GHOST_MESSAGE);
 
         EditMessageText message = new EditMessageText();
         message.setText(messageText.toString());
@@ -128,11 +126,11 @@ public class InformationModeHandler {
         return ghost;
     }
 
-    private Evidence findEvidenceByName(String evidenceName) {
+    private Evidence findEvidenceById(String evidenceId) {
         Evidence evidence = null;
         for (int i = 0; i < Constants.GHOST_LIST.size(); i++) {
             Evidence currentEvidence = Constants.EVIDENCE_LIST.get(i);
-            if (currentEvidence.getName().toLowerCase().equals(evidenceName.toLowerCase())) {
+            if (currentEvidence.getId().toLowerCase().equals(evidenceId.toLowerCase())) {
                 evidence = currentEvidence;
                 break;
             }

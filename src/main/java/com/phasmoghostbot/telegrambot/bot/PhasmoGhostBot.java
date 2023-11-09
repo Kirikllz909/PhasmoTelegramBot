@@ -23,16 +23,17 @@ import com.phasmoghostbot.telegrambot.impl.responseHandler.ResponseHandler;
 public class PhasmoGhostBot extends AbilityBot {
 
     @Autowired
-    private static Environment env;
+    private Environment env;
 
     private ResponseHandler responseHandler;
 
-    public PhasmoGhostBot() {
+    @Autowired
+    public PhasmoGhostBot(Environment env) {
         super(env.getProperty("BOT_TOKEN"), env.getProperty("BOT_USERNAME"));
         responseHandler = new ResponseHandler(silent, db);
     }
 
-    public PhasmoGhostBot(DBContext db) {
+    public PhasmoGhostBot(DBContext db, Environment env) {
         super(env.getProperty("BOT_TOKEN"), env.getProperty("BOT_USERNAME"), db);
         responseHandler = new ResponseHandler(silent, this.db);
     }
